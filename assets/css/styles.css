@@ -1,0 +1,40 @@
+body {
+  padding-top: 76px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2937;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #eaf2ff 100%);
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+.profile-photo-placeholder {
+  height: 360px;
+  border-radius: 18px;
+  background: #dbeafe;
+  color: #1e3a8a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.card {
+  border: 0;
+  border-radius: 18px;
+}
+
+.btn {
+  border-radius: 999px;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
