@@ -1,46 +1,179 @@
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --dark: #111827;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --light: #f8fafc;
+  --border: #e5e7eb;
+}
+
 body {
   padding-top: 76px;
   font-family: Arial, Helvetica, sans-serif;
-  color: #1f2937;
-}
-
-.hero-section {
-  background: linear-gradient(135deg, #f8fafc 0%, #eaf2ff 100%);
-}
-
-.profile-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-}
-
-.profile-photo-placeholder {
-  height: 360px;
-  border-radius: 18px;
-  background: #dbeafe;
-  color: #1e3a8a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-}
-
-.card {
-  border: 0;
-  border-radius: 18px;
-}
-
-.btn {
-  border-radius: 999px;
-}
-.profile-photo {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 18px;
+  color: var(--text);
+  line-height: 1.7;
 }
 
 section {
   scroll-margin-top: 90px;
+}
+
+.navbar-brand {
+  letter-spacing: -0.02em;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+.hero-section {
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 30%),
+    linear-gradient(135deg, #f8fafc 0%, #eef5ff 100%);
+}
+
+.eyebrow,
+.section-label {
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-section .lead {
+  max-width: 760px;
+  color: #374151;
+}
+
+.hero-summary {
+  max-width: 720px;
+  color: var(--muted);
+}
+
+.profile-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+}
+
+.profile-photo {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.profile-note {
+  padding: 18px 4px 0;
+}
+
+.impact-section {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.impact-card {
+  padding: 24px 16px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  height: 100%;
+}
+
+.impact-card h2 {
+  color: var(--dark);
+}
+
+.impact-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card,
+.skill-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.project-card {
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.12);
+}
+
+.project-card .card-body {
+  padding: 28px;
+}
+
+.project-problem {
+  color: #374151;
+  font-weight: 500;
+}
+
+.project-list {
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.tools {
+  color: var(--dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.skill-card {
+  padding: 24px;
+}
+
+.btn {
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.badge {
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+}
+
+.contact-section {
+  background:
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 30%),
+    #111827;
+  color: #ffffff;
+}
+
+footer {
+  background: #ffffff;
+}
+
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .profile-photo {
+    height: 320px;
+  }
 }
