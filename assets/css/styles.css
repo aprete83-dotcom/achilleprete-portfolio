@@ -332,3 +332,70 @@ footer p {
   font-size: 0.9rem;
   font-weight: 700;
 }
+.river-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 18px;
+}
+
+.river-dashboard-card {
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.river-dashboard-large {
+  grid-row: span 2;
+}
+
+.dashboard-label {
+  color: var(--muted-dark);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.river-dashboard-card h3 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.status-good {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.email-preview {
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.email-preview p {
+  color: var(--muted);
+}
+
+.email-subject {
+  color: var(--primary) !important;
+  font-weight: 800;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 991px) {
+  .river-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .river-dashboard-large {
+    grid-row: auto;
+  }
+}
