@@ -6,226 +6,415 @@
   <title>Package Label Automation System | Achille Prete</title>
   <meta name="description" content="Excel-based package label automation system that reduces manual entry, improves accuracy, and speeds up package processing.">
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Main Portfolio CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="project-header">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark border-bottom fixed-top">
     <div class="container">
-      <p class="project-label">Excel Automation • VBA • Workflow Improvement</p>
+      <a class="navbar-brand fw-bold" href="index.html">Achille Prete</a>
 
-      <h1>Package Label Automation System</h1>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <p class="project-intro">
-        An Excel-based automation tool designed to help student workers process incoming packages faster,
-        reduce manual typing errors, and create consistent package labels with minimal cost.
-      </p>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
 
-      <div class="header-actions">
-        <a href="index.html" class="btn-secondary">Back to Portfolio</a>
+        <a class="btn btn-primary ms-lg-3" href="assets/resume/Achille_Prete_Public_Resume.pdf">
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Project Hero -->
+  <header class="hero-section project-hero">
+    <div class="container">
+      <div class="row align-items-center min-vh-100">
+
+        <div class="col-lg-8">
+          <p class="eyebrow mb-3">
+            Excel Automation • VBA • Workflow Improvement
+          </p>
+
+          <h1 class="display-5 fw-bold mb-4">
+            Package Label Automation System
+          </h1>
+
+          <p class="lead mb-4">
+            An Excel-based automation tool designed to help student workers process incoming packages faster,
+            reduce manual typing errors, and create consistent package labels with minimal cost.
+          </p>
+
+          <p class="hero-summary mb-4">
+            This project shows how a small improvement inside a manual workflow can reduce mistakes,
+            improve consistency, and make daily operations easier without replacing the entire process.
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a href="index.html#projects" class="btn btn-primary btn-lg">Back to Portfolio</a>
+            <a href="#screenshots" class="btn btn-outline-primary btn-lg">View Screenshots</a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mt-5 mt-lg-0">
+          <div class="project-summary-card">
+            <p class="section-label">Project Type</p>
+            <h2 class="h5 fw-bold mb-3">Process Automation</h2>
+
+            <div class="summary-item">
+              <span>Tool</span>
+              <strong>Microsoft Excel + VBA</strong>
+            </div>
+
+            <div class="summary-item">
+              <span>Focus</span>
+              <strong>Package receiving workflow</strong>
+            </div>
+
+            <div class="summary-item">
+              <span>Outcome</span>
+              <strong>Faster, more consistent labels</strong>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="project-main">
+  <main>
 
     <!-- Overview -->
-    <section class="project-section">
+    <section class="py-5">
       <div class="container">
-        <h2>Project Overview</h2>
+        <div class="row align-items-start g-5">
 
-        <p>
-          Sometimes, improving a process does not require replacing the entire system.
-          In many cases, a small improvement in the right part of the workflow can make the process
-          faster, simpler, and more accurate.
-        </p>
+          <div class="col-lg-4">
+            <p class="section-label">Overview</p>
+            <h2 class="fw-bold mb-3">
+              A small system improvement with practical operational impact.
+            </h2>
+          </div>
 
-        <p>
-          For this project, a full package management system could have been built to track the process
-          from the moment stakeholders purchase materials to the final pickup signature. However, that type
-          of solution would require major changes in user habits, additional training, and a higher financial
-          investment.
-        </p>
+          <div class="col-lg-8">
+            <div class="content-card">
+              <p>
+                Sometimes, improving a process does not require replacing the entire system.
+                In many cases, a small improvement in the right part of the workflow can make the process
+                faster, simpler, and more accurate.
+              </p>
 
-        <p>
-          Instead, I focused on improving the part of the process where mistakes and delays were most likely
-          to happen: preparing package labels. By creating a simple Excel-based automation tool, the department
-          was able to reduce manual entry, speed up package processing, and improve consistency without adding cost
-          or changing the entire workflow.
-        </p>
+              <p>
+                For this project, a full package management system could have been built to track the process
+                from the moment stakeholders purchase materials to the final pickup signature. However, that type
+                of solution would require major changes in user habits, additional training, and a higher financial
+                investment.
+              </p>
+
+              <p class="mb-0">
+                Instead, I focused on improving the part of the process where mistakes and delays were most likely
+                to happen: preparing package labels. By creating a simple Excel-based automation tool, the process
+                became faster, more consistent, and easier for student staff.
+              </p>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- Problem -->
-    <section class="project-section light-section">
+    <section class="py-5 project-section">
       <div class="container">
-        <h2>The Problem</h2>
+        <div class="row align-items-start g-5">
 
-        <p>
-          Package labels were previously prepared manually, which created several challenges:
-        </p>
+          <div class="col-lg-4">
+            <p class="section-label">Problem</p>
+            <h2 class="fw-bold mb-3">
+              Manual label preparation created avoidable delays and errors.
+            </h2>
+          </div>
 
-        <ul>
-          <li>Manual typing increased the chance of errors.</li>
-          <li>Student workers had to search for information before preparing labels.</li>
-          <li>Labels were not always consistent.</li>
-          <li>Packages requiring refrigeration needed extra attention and could be missed.</li>
-          <li>The process took longer than necessary during busy receiving periods.</li>
-        </ul>
+          <div class="col-lg-8">
+            <div class="content-card">
+              <p>
+                Package labels were previously prepared manually, which created several challenges:
+              </p>
+
+              <ul class="project-list mb-0">
+                <li>Manual typing increased the chance of errors.</li>
+                <li>Student workers had to search for information before preparing labels.</li>
+                <li>Labels were not always consistent.</li>
+                <li>Packages requiring refrigeration needed extra attention and could be missed.</li>
+                <li>The process took longer than necessary during busy receiving periods.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- Solution -->
-    <section class="project-section">
+    <section class="py-5">
       <div class="container">
-        <h2>The Solution</h2>
 
-        <p>
-          I created an Excel-based package label system where the user enters a requisition number,
-          and the tool automatically populates the label with the correct package information.
-        </p>
-
-        <p>
-          The system also includes a refrigeration check. When a package requires cold storage,
-          the user is prompted, and the word <strong>“Refrigeration”</strong> is added directly to the label.
-        </p>
-
-        <div class="feature-grid">
-          <div class="feature-card">
-            <h3>Automated Lookup</h3>
-            <p>
-              The user enters a requisition number and the tool fills the label automatically.
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <p class="section-label">Solution</p>
+            <h2 class="fw-bold mb-3">Excel-based automation for package labels</h2>
+            <p class="text-muted mb-0">
+              The user enters a requisition number, and the system automatically populates the label with the correct information.
+              If refrigeration is needed, the tool prompts the user and adds the note directly to the label.
             </p>
           </div>
+        </div>
 
-          <div class="feature-card">
-            <h3>Reduced Manual Entry</h3>
-            <p>
-              The system minimizes repeated typing and helps prevent common data entry mistakes.
-            </p>
+        <div class="row g-4">
+
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Automated Lookup</h3>
+              <p class="text-muted mb-0">
+                The user enters a requisition number and the tool fills the label automatically.
+              </p>
+            </div>
           </div>
 
-          <div class="feature-card">
-            <h3>Refrigeration Check</h3>
-            <p>
-              The tool prompts the user when cold storage is needed and adds the note to the label.
-            </p>
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Reduced Manual Entry</h3>
+              <p class="text-muted mb-0">
+                The system minimizes repeated typing and helps prevent common data entry mistakes.
+              </p>
+            </div>
           </div>
 
-          <div class="feature-card">
-            <h3>Print-Ready Format</h3>
-            <p>
-              The completed label is formatted and ready to print directly from Excel.
-            </p>
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Refrigeration Check</h3>
+              <p class="text-muted mb-0">
+                The tool prompts the user when cold storage is needed and adds the note to the label.
+              </p>
+            </div>
           </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Print-Ready Format</h3>
+              <p class="text-muted mb-0">
+                The completed label is formatted and ready to print directly from Excel.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- Screenshots -->
-    <section class="project-section light-section">
+    <section id="screenshots" class="py-5 project-section">
       <div class="container">
-        <h2>System Screenshots</h2>
 
-        <p>
-          The screenshots below use demo data only. Real department names, requisition numbers,
-          and internal information were removed for privacy.
-        </p>
-
-        <div class="screenshot-grid">
-          <div class="screenshot-card">
-            <img src="images/package-label-input.png" alt="Excel package label input screen">
-            <h3>Main Input Screen</h3>
-            <p>
-              The user enters the requisition number in the Excel tool.
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <p class="section-label">Screenshots</p>
+            <h2 class="fw-bold mb-3">System screenshots</h2>
+            <p class="text-muted mb-0">
+              The screenshots below use demo data only. Real department names, requisition numbers,
+              and internal information were removed for privacy.
             </p>
           </div>
+        </div>
 
-          <div class="screenshot-card">
-            <img src="images/package-label-filled.png" alt="Auto-filled package label in Excel">
-            <h3>Auto-Filled Label</h3>
-            <p>
-              The system automatically fills the package label with demo package information.
-            </p>
+        <div class="row g-4">
+
+          <div class="col-md-6">
+            <div class="screenshot-card">
+              <img src="assets/img/package-label-input.png" alt="Excel package label input screen">
+              <div class="screenshot-body">
+                <h3 class="h6 fw-bold">Main Input Screen</h3>
+                <p class="text-muted mb-0">
+                  The user enters the requisition number in the Excel tool.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div class="screenshot-card">
-            <img src="images/package-label-refrigeration.png" alt="Refrigeration prompt in Excel">
-            <h3>Refrigeration Prompt</h3>
-            <p>
-              The system asks if the package needs refrigeration.
-            </p>
+          <div class="col-md-6">
+            <div class="screenshot-card">
+              <img src="assets/img/package-label-filled.png" alt="Auto-filled package label in Excel">
+              <div class="screenshot-body">
+                <h3 class="h6 fw-bold">Auto-Filled Label</h3>
+                <p class="text-muted mb-0">
+                  The system automatically fills the package label with demo package information.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div class="screenshot-card">
-            <img src="images/package-label-final.png" alt="Final package label with refrigeration note">
-            <h3>Final Print-Ready Label</h3>
-            <p>
-              The final label is ready to print and includes the refrigeration note when needed.
-            </p>
+          <div class="col-md-6">
+            <div class="screenshot-card">
+              <img src="assets/img/package-label-refrigeration.png" alt="Refrigeration prompt in Excel">
+              <div class="screenshot-body">
+                <h3 class="h6 fw-bold">Refrigeration Prompt</h3>
+                <p class="text-muted mb-0">
+                  The system asks if the package needs refrigeration.
+                </p>
+              </div>
+            </div>
           </div>
+
+          <div class="col-md-6">
+            <div class="screenshot-card">
+              <img src="assets/img/package-label-final.png" alt="Final package label with refrigeration note">
+              <div class="screenshot-body">
+                <h3 class="h6 fw-bold">Final Print-Ready Label</h3>
+                <p class="text-muted mb-0">
+                  The final label is ready to print and includes the refrigeration note when needed.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- Tools -->
-    <section class="project-section">
+    <section class="py-5">
       <div class="container">
-        <h2>Tools and Skills Used</h2>
 
-        <div class="skills-list">
-          <span>Microsoft Excel</span>
-          <span>VBA</span>
-          <span>Data Lookup</span>
-          <span>Workflow Automation</span>
-          <span>Process Improvement</span>
-          <span>Print Formatting</span>
-          <span>User-Friendly Design</span>
+        <div class="row align-items-start g-5">
+          <div class="col-lg-4">
+            <p class="section-label">Tools</p>
+            <h2 class="fw-bold mb-3">Tools and skills used</h2>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="content-card">
+              <div class="skills-list">
+                <span>Microsoft Excel</span>
+                <span>VBA</span>
+                <span>Data Lookup</span>
+                <span>Workflow Automation</span>
+                <span>Process Improvement</span>
+                <span>Print Formatting</span>
+                <span>User Workflow Design</span>
+              </div>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
     <!-- Impact -->
-    <section class="project-section light-section">
+    <section class="py-5 project-section">
       <div class="container">
-        <h2>Impact</h2>
+        <div class="row align-items-start g-5">
 
-        <p>
-          This project improved a specific part of the package receiving workflow without requiring a new
-          software platform or a major process change.
-        </p>
+          <div class="col-lg-4">
+            <p class="section-label">Impact</p>
+            <h2 class="fw-bold mb-3">
+              Faster processing without a costly system replacement.
+            </h2>
+          </div>
 
-        <ul>
-          <li>Reduced manual typing and repeated data entry.</li>
-          <li>Improved label consistency.</li>
-          <li>Helped student workers process packages more quickly.</li>
-          <li>Reduced the chance of missing refrigeration requirements.</li>
-          <li>Created a practical solution with no additional software cost.</li>
-        </ul>
+          <div class="col-lg-8">
+            <div class="content-card">
+              <p>
+                This project improved a specific part of the package receiving workflow without requiring a new
+                software platform or a major process change.
+              </p>
+
+              <ul class="project-list mb-0">
+                <li>Reduced manual typing and repeated data entry.</li>
+                <li>Improved label consistency.</li>
+                <li>Helped student workers process packages more quickly.</li>
+                <li>Reduced the chance of missing refrigeration requirements.</li>
+                <li>Created a practical solution with no additional software cost.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
     <!-- Reflection -->
-    <section class="project-section">
+    <section class="py-5">
       <div class="container">
-        <h2>What This Project Shows</h2>
+        <div class="row align-items-start g-5">
 
-        <p>
-          This project shows how Information Systems thinking can be applied to daily operations.
-          The goal was not only to build a spreadsheet, but to understand a workflow, identify where errors
-          were happening, and create a practical tool that made the process easier for the people using it.
+          <div class="col-lg-4">
+            <p class="section-label">Reflection</p>
+            <h2 class="fw-bold mb-3">
+              What this project shows
+            </h2>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="content-card">
+              <p>
+                This project shows how Information Systems thinking can be applied to daily operations.
+                The goal was not only to build a spreadsheet, but to understand a workflow, identify where errors
+                were happening, and create a practical tool that made the process easier for the people using it.
+              </p>
+
+              <p class="mb-0">
+                It demonstrates how small, low-cost systems can support better operations when they are designed
+                around real user needs.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="contact-section py-5">
+      <div class="container text-center">
+        <p class="section-label text-white-50">Portfolio</p>
+        <h2 class="fw-bold mb-3">Back to the main portfolio</h2>
+        <p class="mb-4">
+          View more projects focused on information systems, operations analytics, automation, and data analysis.
         </p>
 
-        <p>
-          It demonstrates how small, low-cost systems can support better operations when they are designed
-          around real user needs.
-        </p>
+        <a href="index.html#projects" class="btn btn-light">View All Projects</a>
       </div>
     </section>
 
   </main>
+
+  <footer class="py-4 border-top">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="small mb-0">
+        &copy; 2026 Achille Prete. All rights reserved.
+      </p>
+
+      <p class="small mb-0">
+        Built with HTML, CSS, Bootstrap, and GitHub Pages.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
