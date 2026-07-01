@@ -4,13 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Potomac River Level Alert System | Achille Prete</title>
-  <meta name="description" content="Automated river gauge monitoring concept that checks Potomac River levels and sends an email alert when conditions are within a preferred kayaking range.">
+  <meta name="description" content="Working river gauge monitoring prototype that checks NOAA/NWPS Potomac River levels and compares them against a preferred kayaking range.">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Main Portfolio CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Small page-specific styles -->
+  <style>
+    .status-good {
+      color: #22c55e;
+      font-weight: 700;
+    }
+
+    .status-warning {
+      color: #facc15;
+      font-weight: 700;
+    }
+
+    .status-danger {
+      color: #fb7185;
+      font-weight: 700;
+    }
+
+    .dashboard-note {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #22c55e;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .live-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
+    }
+
+    .code-source {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      word-break: break-word;
+    }
+
+    .email-note {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -46,7 +103,7 @@
 
         <div class="col-lg-8">
           <p class="eyebrow mb-3">
-            Data Monitoring • Automation • Email Alerts
+            NOAA API • Data Monitoring • Automation • Threshold Logic
           </p>
 
           <h1 class="display-5 fw-bold mb-4">
@@ -54,29 +111,36 @@
           </h1>
 
           <p class="lead mb-4">
-            A river gauge monitoring concept designed to check Potomac River levels automatically
-            and send an email alert when conditions are within a preferred kayaking range.
+            A working river gauge monitoring prototype that retrieves the latest available
+            Potomac River level from NOAA’s National Water Prediction Service and compares it
+            against a preferred kayaking range.
           </p>
 
           <p class="hero-summary mb-4">
-            This project connects public data, automation, threshold logic, and notification design
+            This project connects public water data, JavaScript, threshold logic, and alert design
             to support faster decision-making for river planning.
           </p>
 
           <div class="d-flex flex-wrap gap-2">
             <a href="index.html#projects" class="btn btn-primary btn-lg">Back to Portfolio</a>
-            <a href="#dashboard" class="btn btn-outline-primary btn-lg">View Concept Dashboard</a>
+            <a href="#dashboard" class="btn btn-outline-primary btn-lg">View Live Dashboard</a>
+            <a href="https://water.noaa.gov/gauges/brkm2" target="_blank" rel="noopener" class="btn btn-outline-primary btn-lg">NOAA Gauge</a>
           </div>
         </div>
 
         <div class="col-lg-4 mt-5 mt-lg-0">
           <div class="project-summary-card">
             <p class="section-label">Project Type</p>
-            <h2 class="h5 fw-bold mb-3">Data Alert System</h2>
+            <h2 class="h5 fw-bold mb-3">Live Data Monitoring</h2>
+
+            <div class="summary-item">
+              <span>Gauge</span>
+              <strong>BRKM2</strong>
+            </div>
 
             <div class="summary-item">
               <span>Data Source</span>
-              <strong>Public river gauge data</strong>
+              <strong>NOAA/NWPS API</strong>
             </div>
 
             <div class="summary-item">
@@ -86,7 +150,7 @@
 
             <div class="summary-item">
               <span>Output</span>
-              <strong>Email notification concept</strong>
+              <strong>Dashboard + alert design</strong>
             </div>
           </div>
         </div>
@@ -105,27 +169,27 @@
           <div class="col-lg-4">
             <p class="section-label">Overview</p>
             <h2 class="fw-bold mb-3">
-              Turning live river data into a useful alert system.
+              Turning NOAA river gauge data into a useful decision tool.
             </h2>
           </div>
 
           <div class="col-lg-8">
             <div class="content-card">
               <p>
-                This project is a concept for an automated river monitoring system designed to help kayakers
-                decide when conditions are within a preferred paddling range.
+                This project is a working prototype for an automated river monitoring system designed
+                to help kayakers decide when Potomac River conditions are within a preferred paddling range.
               </p>
 
               <p>
-                As a kayaker, checking river levels is part of the planning process. Instead of manually visiting
-                the same gauge website multiple times, this system would automatically check the Potomac River level,
-                compare the current reading against a user-defined range, and send an email alert when the level is
-                suitable for kayaking.
+                As a kayaker, checking river levels is part of the planning process. Instead of manually
+                visiting the gauge website multiple times, this page retrieves the latest available river level
+                from NOAA’s National Water Prediction Service API when the page loads.
               </p>
 
               <p class="mb-0">
-                The goal of the project is to show how public data, automation, and simple notification logic can support
-                faster and better decision-making.
+                The system compares the current level with a user-defined minimum and maximum range.
+                This demonstrates how public data, automation, and simple decision logic can support
+                faster and better planning.
               </p>
             </div>
           </div>
@@ -142,28 +206,28 @@
           <div class="col-lg-4">
             <p class="section-label">Problem</p>
             <h2 class="fw-bold mb-3">
-              River levels can change quickly, and manual checking is inefficient.
+              River levels change quickly, and manual checking is inefficient.
             </h2>
           </div>
 
           <div class="col-lg-8">
             <div class="content-card">
               <p>
-                River levels can change quickly depending on rain, dam releases, and upstream conditions.
-                For kayakers, timing matters. A level that is too low may not be worth the trip, while a level
-                that is too high may create unsafe conditions.
+                River levels can change throughout the day depending on rain, upstream conditions,
+                dam releases, and seasonal flow. For kayakers, timing matters. A level that is too low
+                may not be worth the trip, while a level that is too high may create unsafe conditions.
               </p>
 
               <p>
-                Manually checking the same website repeatedly is inefficient, especially when the user is only
-                interested in a specific range of values.
+                Manually checking the same website repeatedly is inefficient, especially when the user
+                only cares about a specific range of values.
               </p>
 
               <ul class="project-list mb-0">
                 <li>River conditions can change throughout the day.</li>
                 <li>Manual checking takes time and can be easy to forget.</li>
-                <li>The user may only care when the level is inside a specific range.</li>
-                <li>A simple alert can help the user make faster decisions.</li>
+                <li>The user may only care when the level is inside a specific kayaking range.</li>
+                <li>A simple dashboard or alert can help the user make faster decisions.</li>
               </ul>
             </div>
           </div>
@@ -179,10 +243,10 @@
         <div class="row mb-4">
           <div class="col-lg-8">
             <p class="section-label">Solution</p>
-            <h2 class="fw-bold mb-3">Automated gauge check and email notification logic</h2>
+            <h2 class="fw-bold mb-3">Live gauge check with threshold logic</h2>
             <p class="text-muted mb-0">
-              The proposed system checks an official river gauge source, reads the current river level,
-              compares it with a preferred kayaking range, and sends an email when the level is within range.
+              The system checks NOAA’s NWPS API for the BRKM2 gauge, reads the latest available
+              Potomac River level, compares it with a preferred kayaking range, and displays the current status.
             </p>
           </div>
         </div>
@@ -192,9 +256,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">01</span>
-              <h3 class="h6 fw-bold">Check Gauge</h3>
+              <h3 class="h6 fw-bold">Call NOAA API</h3>
               <p class="text-muted mb-0">
-                The system checks the river gauge data source on a schedule.
+                JavaScript requests the observed stage/flow data for gauge BRKM2.
               </p>
             </div>
           </div>
@@ -202,9 +266,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">02</span>
-              <h3 class="h6 fw-bold">Read Level</h3>
+              <h3 class="h6 fw-bold">Read Latest Level</h3>
               <p class="text-muted mb-0">
-                The current river level is retrieved, cleaned, and stored.
+                The page extracts the latest available river level value from the API response.
               </p>
             </div>
           </div>
@@ -222,9 +286,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">04</span>
-              <h3 class="h6 fw-bold">Send Alert</h3>
+              <h3 class="h6 fw-bold">Display Status</h3>
               <p class="text-muted mb-0">
-                An email is sent when the level is within the selected range.
+                The dashboard shows whether the river is below, within, or above the selected range.
               </p>
             </div>
           </div>
@@ -233,16 +297,17 @@
       </div>
     </section>
 
-    <!-- Dashboard -->
+    <!-- Live Dashboard -->
     <section id="dashboard" class="py-5 project-section">
       <div class="container">
 
         <div class="row mb-4">
           <div class="col-lg-8">
-            <p class="section-label">Concept Dashboard</p>
-            <h2 class="fw-bold mb-3">Sample river level status</h2>
+            <p class="section-label">Live Dashboard</p>
+            <h2 class="fw-bold mb-3">Latest available Potomac River level</h2>
             <p class="text-muted mb-0">
-              This example uses sample values to demonstrate how the dashboard and alert logic could work.
+              This dashboard retrieves the latest available BRKM2 gauge value from NOAA’s National Water
+              Prediction Service when the page loads. It is not a forecast and should not replace safety checks.
             </p>
           </div>
         </div>
@@ -250,25 +315,37 @@
         <div class="river-dashboard-grid">
           <div class="river-dashboard-card river-dashboard-large">
             <p class="dashboard-label">Current Potomac Level</p>
-            <h3>3.7 ft</h3>
-            <p class="status-good mb-0">Within preferred kayaking range</p>
+            <div class="live-badge mb-2">
+              <span class="live-dot"></span>
+              <span id="dataMode">Live NOAA Data</span>
+            </div>
+            <h3 id="currentLevel">Loading...</h3>
+            <p id="levelStatus" class="status-warning mb-0">Checking NOAA gauge data...</p>
           </div>
 
           <div class="river-dashboard-card">
             <p class="dashboard-label">Minimum Target</p>
-            <h3>3.0 ft</h3>
+            <h3 id="minTarget">3.0 ft</h3>
           </div>
 
           <div class="river-dashboard-card">
             <p class="dashboard-label">Maximum Target</p>
-            <h3>4.5 ft</h3>
+            <h3 id="maxTarget">4.5 ft</h3>
           </div>
 
           <div class="river-dashboard-card">
-            <p class="dashboard-label">Alert Status</p>
-            <h3>Email Sent</h3>
+            <p class="dashboard-label">Last Updated</p>
+            <h3 id="lastUpdated">Loading...</h3>
           </div>
         </div>
+
+        <p class="dashboard-note mb-0">
+          Data source:
+          <a href="https://water.noaa.gov/gauges/brkm2" target="_blank" rel="noopener">
+            NOAA National Water Prediction Service gauge BRKM2
+          </a>.
+          Always verify weather, river conditions, and personal safety before kayaking.
+        </p>
 
       </div>
     </section>
@@ -281,7 +358,7 @@
           <div class="col-lg-4">
             <p class="section-label">Email Alert</p>
             <h2 class="fw-bold mb-3">
-              Notification when conditions are inside the selected range.
+              Notification design for when conditions are inside the selected range.
             </h2>
           </div>
 
@@ -292,16 +369,21 @@
               </p>
 
               <p>
-                The Potomac River level is currently <strong>3.7 ft</strong>.
+                The Potomac River level is currently <strong id="emailLevel">checking...</strong>.
               </p>
 
               <p>
-                This is within your preferred kayaking range of <strong>3.0 ft to 4.5 ft</strong>.
+                Your preferred kayaking range is <strong>3.0 ft to 4.5 ft</strong>.
               </p>
 
-              <p class="mb-0">
-                Conditions may be suitable for kayaking. Please check weather, safety conditions,
-                and local guidance before going.
+              <p class="mb-0" id="emailMessage">
+                The system is checking whether conditions are inside your selected range.
+              </p>
+
+              <p class="email-note mb-0">
+                For security, the public GitHub Pages website only displays the live dashboard.
+                The email alert would run from a private scheduled script so email credentials are not exposed
+                in the browser.
               </p>
             </div>
           </div>
@@ -325,9 +407,9 @@
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Automated Monitoring</h3>
+              <h3 class="h6 fw-bold">Live Data Retrieval</h3>
               <p class="text-muted mb-0">
-                Checks current river level data without requiring manual visits to the gauge website.
+                Retrieves the latest available river gauge value from NOAA’s NWPS API.
               </p>
             </div>
           </div>
@@ -336,16 +418,16 @@
             <div class="skill-card h-100">
               <h3 class="h6 fw-bold">Custom Thresholds</h3>
               <p class="text-muted mb-0">
-                Allows the user to define a preferred minimum and maximum river level.
+                Compares the river level against a selected minimum and maximum value.
               </p>
             </div>
           </div>
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Email Notification</h3>
+              <h3 class="h6 fw-bold">Status Logic</h3>
               <p class="text-muted mb-0">
-                Sends an email alert only when the river level is inside the selected range.
+                Displays whether the river is below, within, or above the preferred kayaking range.
               </p>
             </div>
           </div>
@@ -354,7 +436,7 @@
             <div class="skill-card h-100">
               <h3 class="h6 fw-bold">Expandable Design</h3>
               <p class="text-muted mb-0">
-                Could be expanded to include multiple gauges, historical logs, or a visual dashboard.
+                Could be expanded with email alerts, historical logs, charts, or multiple river gauges.
               </p>
             </div>
           </div>
@@ -376,15 +458,20 @@
           <div class="col-lg-8">
             <div class="content-card">
               <div class="skills-list">
-                <span>Public Data Source</span>
-                <span>API or Web Data Retrieval</span>
-                <span>Python or JavaScript</span>
+                <span>NOAA NWPS API</span>
+                <span>JavaScript Fetch</span>
+                <span>JSON Parsing</span>
                 <span>Conditional Logic</span>
-                <span>Email Automation</span>
                 <span>Data Monitoring</span>
+                <span>Threshold Alerts</span>
                 <span>Workflow Automation</span>
-                <span>User-Centered Design</span>
+                <span>GitHub Pages</span>
               </div>
+
+              <p class="code-source mt-4 mb-0">
+                API endpoint used by the dashboard:
+                https://api.water.noaa.gov/nwps/v1/gauges/BRKM2/stageflow/observed
+              </p>
             </div>
           </div>
 
@@ -400,7 +487,7 @@
           <div class="col-lg-4">
             <p class="section-label">Why It Matters</p>
             <h2 class="fw-bold mb-3">
-              A small system that turns data into action.
+              A small system that turns public data into action.
             </h2>
           </div>
 
@@ -438,12 +525,12 @@
             <div class="content-card">
               <p>
                 This project shows the ability to identify a real-world need, connect to an external data source,
-                process live data, apply decision logic, and trigger an automated action.
+                process live data, apply decision logic, and display a result through a user-friendly interface.
               </p>
 
               <p class="mb-0">
                 The same logic could be applied to facilities monitoring, equipment alerts, inventory thresholds,
-                weather notifications, or any process where users need to be notified when data reaches a specific condition.
+                weather notifications, or any process where users need to know when data reaches a specific condition.
               </p>
             </div>
           </div>
@@ -481,6 +568,224 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Live NOAA River Gauge Script -->
+  <script>
+    /*
+      Potomac River Level Alert System
+      Gauge: BRKM2
+      Source: NOAA National Water Prediction Service API
+      Endpoint: https://api.water.noaa.gov/nwps/v1/gauges/BRKM2/stageflow/observed
+
+      Notes:
+      - GitHub Pages can display live API data with JavaScript.
+      - Email should not be sent directly from this public page because credentials would be exposed.
+      - Email alerts should run from a private scheduled script or backend service.
+    */
+
+    const gaugeId = "BRKM2";
+    const minLevel = 3.0;
+    const maxLevel = 4.5;
+    const apiUrl = `https://api.water.noaa.gov/nwps/v1/gauges/${gaugeId}/stageflow/observed`;
+
+    document.getElementById("minTarget").textContent = minLevel.toFixed(1) + " ft";
+    document.getElementById("maxTarget").textContent = maxLevel.toFixed(1) + " ft";
+
+    async function getRiverLevel() {
+      const currentLevel = document.getElementById("currentLevel");
+      const levelStatus = document.getElementById("levelStatus");
+      const lastUpdated = document.getElementById("lastUpdated");
+      const emailLevel = document.getElementById("emailLevel");
+      const emailMessage = document.getElementById("emailMessage");
+
+      try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error("NOAA API request failed with status " + response.status);
+        }
+
+        const data = await response.json();
+        const reading = extractLatestStageReading(data);
+
+        if (!reading || isNaN(reading.level)) {
+          throw new Error("Could not find a valid stage value in the NOAA API response.");
+        }
+
+        const level = reading.level;
+        const units = reading.units || "ft";
+
+        currentLevel.textContent = level.toFixed(2) + " " + units;
+        emailLevel.textContent = level.toFixed(2) + " " + units;
+
+        if (reading.time) {
+          const observedDate = new Date(reading.time);
+          lastUpdated.textContent = observedDate.toLocaleString();
+        } else {
+          lastUpdated.textContent = "Latest reading";
+        }
+
+        if (level >= minLevel && level <= maxLevel) {
+          levelStatus.textContent = "Within preferred kayaking range";
+          levelStatus.className = "status-good mb-0";
+
+          emailMessage.innerHTML =
+            "The river level is inside the selected range. Conditions may be suitable for kayaking. Please check weather, safety conditions, and local guidance before going.";
+        } else if (level < minLevel) {
+          levelStatus.textContent = "Below preferred kayaking range";
+          levelStatus.className = "status-warning mb-0";
+
+          emailMessage.innerHTML =
+            "The river level is below the selected range. It may be too low for the preferred kayaking conditions.";
+        } else {
+          levelStatus.textContent = "Above preferred kayaking range";
+          levelStatus.className = "status-danger mb-0";
+
+          emailMessage.innerHTML =
+            "The river level is above the selected range. Higher water may create stronger or unsafe conditions.";
+        }
+
+      } catch (error) {
+        console.error(error);
+
+        currentLevel.textContent = "Unavailable";
+        levelStatus.textContent = "Unable to load NOAA river data";
+        levelStatus.className = "status-warning mb-0";
+        lastUpdated.textContent = "Error";
+        emailLevel.textContent = "unavailable";
+        emailMessage.textContent =
+          "The live NOAA value could not be loaded. Please check the NOAA gauge page directly.";
+      }
+    }
+
+    function extractLatestStageReading(data) {
+      /*
+        The NOAA NWPS API can return observed stage/flow values in nested objects.
+        This function first checks the most likely locations, then falls back to a broader search.
+      */
+
+      const possibleArrays = [
+        data?.observed?.data,
+        data?.observed?.values,
+        data?.data,
+        data?.values,
+        data?.stageflow?.observed?.data,
+        data?.stageflow?.observed?.values
+      ];
+
+      for (const arr of possibleArrays) {
+        if (Array.isArray(arr) && arr.length > 0) {
+          const reading = findLatestUsableReading(arr, data);
+          if (reading) {
+            return reading;
+          }
+        }
+      }
+
+      const collected = [];
+      collectPossibleReadings(data, collected);
+
+      if (collected.length > 0) {
+        return findLatestUsableReading(collected, data);
+      }
+
+      return null;
+    }
+
+    function findLatestUsableReading(readings, fullData) {
+      const usable = readings
+        .map(item => normalizeReading(item, fullData))
+        .filter(item => item && !isNaN(item.level));
+
+      if (usable.length === 0) {
+        return null;
+      }
+
+      usable.sort((a, b) => {
+        const timeA = a.time ? new Date(a.time).getTime() : 0;
+        const timeB = b.time ? new Date(b.time).getTime() : 0;
+        return timeA - timeB;
+      });
+
+      return usable[usable.length - 1];
+    }
+
+    function normalizeReading(item, fullData) {
+      if (!item || typeof item !== "object") {
+        return null;
+      }
+
+      /*
+        Prefer stage-related values. Many NWPS responses use primary/secondary values.
+        For this gauge, the page is focused on stage/height in feet.
+      */
+      const rawLevel =
+        item.stage ??
+        item.primary ??
+        item.value ??
+        item.height ??
+        item.observedValue ??
+        null;
+
+      const level = parseFloat(rawLevel);
+
+      const time =
+        item.validTime ??
+        item.time ??
+        item.timestamp ??
+        item.observedTime ??
+        item.forecastTime ??
+        null;
+
+      const units =
+        item.stageUnits ??
+        item.primaryUnits ??
+        item.units ??
+        fullData?.observed?.primaryUnits ??
+        fullData?.primaryUnits ??
+        "ft";
+
+      if (isNaN(level)) {
+        return null;
+      }
+
+      return {
+        level,
+        time,
+        units
+      };
+    }
+
+    function collectPossibleReadings(obj, collected) {
+      if (!obj || typeof obj !== "object") {
+        return;
+      }
+
+      if (
+        "primary" in obj ||
+        "stage" in obj ||
+        "value" in obj ||
+        "height" in obj ||
+        "observedValue" in obj
+      ) {
+        collected.push(obj);
+      }
+
+      for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          const value = obj[key];
+
+          if (Array.isArray(value)) {
+            value.forEach(child => collectPossibleReadings(child, collected));
+          } else if (value && typeof value === "object") {
+            collectPossibleReadings(value, collected);
+          }
+        }
+      }
+    }
+
+    getRiverLevel();
+  </script>
 
 </body>
 </html>
