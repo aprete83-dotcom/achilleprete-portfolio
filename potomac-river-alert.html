@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Potomac River Play Spot Alert System | Achille Prete</title>
-  <meta name="description" content="Working river gauge monitoring prototype that checks NOAA BRKM2 river data, compares the Potomac level against kayaking play spot ranges, and supports scheduled email alerts.">
+  <meta name="description" content="Working river gauge monitoring prototype that checks NOAA BRKM2 river data, compares the Potomac level against kayaking play spot ranges, and supports scheduled Google Apps Script email alerts.">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -179,7 +179,7 @@
 
         <div class="col-lg-8">
           <p class="eyebrow mb-3">
-            NOAA API • River Data • Automation • Email Alert Design
+            NOAA API • River Data • Google Apps Script • Email Automation
           </p>
 
           <h1 class="display-5 fw-bold mb-4">
@@ -226,8 +226,8 @@
             </div>
 
             <div class="summary-item">
-              <span>Email Schedule</span>
-              <strong>6:00 AM and 4:00 PM</strong>
+              <span>Email Automation</span>
+              <strong>Google Apps Script</strong>
             </div>
           </div>
         </div>
@@ -366,7 +366,7 @@
               <span class="step-number">04</span>
               <h3 class="h6 fw-bold">Send Alert</h3>
               <p class="text-muted mb-0">
-                A private scheduled script can send daily email alerts at 6:00 AM and 4:00 PM.
+                Google Apps Script runs privately on a schedule and sends email summaries at 6:00 AM and 4:00 PM.
               </p>
             </div>
           </div>
@@ -517,8 +517,8 @@
 
               <p class="email-note mb-0">
                 For security, the public GitHub Pages page only displays the live dashboard.
-                The actual email alert should run from a private scheduled script, such as Google Apps Script,
-                so email credentials are not exposed in the browser.
+                The actual email alert runs separately from the public website through a private Google Apps Script
+                automation, so email permissions and credentials are not exposed in the browser.
               </p>
             </div>
           </div>
@@ -527,8 +527,54 @@
       </div>
     </section>
 
-    <!-- Alert Logic Explanation -->
+    <!-- Implementation Design -->
     <section class="py-5">
+      <div class="container">
+        <div class="row align-items-start g-5">
+
+          <div class="col-lg-4">
+            <p class="section-label">Implementation</p>
+            <h2 class="fw-bold mb-3">
+              Separating the public dashboard from the private email automation.
+            </h2>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="content-card">
+              <p>
+                The project uses two separate components: a public dashboard and a private automation workflow.
+                The public website displays live river information, while the email notification runs separately
+                through Google Apps Script.
+              </p>
+
+              <p>
+                This separation is important because the website is public. Sending email directly from the browser
+                would expose private credentials or email service keys. Instead, Google Apps Script runs privately
+                from a Google account and can be scheduled to execute automatically.
+              </p>
+
+              <p>
+                In the implemented workflow, Google Apps Script checks the NOAA BRKM2 gauge data, reads the current
+                river level, checks the forecast value closest to 6:30 PM, compares those values against the stored
+                Potomac play spot ranges, and sends an email summary to the selected recipient.
+              </p>
+
+              <ul class="project-list mb-0">
+                <li>GitHub Pages displays the public river dashboard.</li>
+                <li>Google Apps Script runs the private email automation.</li>
+                <li>The script checks NOAA BRKM2 observed and forecast data.</li>
+                <li>Alerts are scheduled for 6:00 AM for daily planning and 4:00 PM for after-work decision-making.</li>
+                <li>Email permissions remain private and are not exposed on the website.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Logic Explanation -->
+    <section class="py-5 project-section">
       <div class="container">
 
         <div class="row mb-4">
@@ -574,8 +620,8 @@
             <div class="logic-box">
               <h3 class="h6 fw-bold">Email Schedule</h3>
               <p class="mb-0">
-                The planned automation sends one email at 6:00 AM for daily planning and another at
-                4:00 PM for an updated after-work decision.
+                The private automation sends one email in the morning for daily planning and another in
+                the afternoon for an updated after-work decision.
               </p>
             </div>
           </div>
@@ -585,7 +631,7 @@
     </section>
 
     <!-- Features -->
-    <section class="py-5 project-section">
+    <section class="py-5">
       <div class="container">
 
         <div class="row mb-4">
@@ -626,9 +672,9 @@
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Scheduled Email Design</h3>
+              <h3 class="h6 fw-bold">Scheduled Email Automation</h3>
               <p class="text-muted mb-0">
-                Supports a private automation that sends alerts every day at 6:00 AM and 4:00 PM.
+                Uses Google Apps Script to send scheduled river condition emails securely.
               </p>
             </div>
           </div>
@@ -638,7 +684,7 @@
     </section>
 
     <!-- Tools -->
-    <section class="py-5">
+    <section class="py-5 project-section">
       <div class="container">
         <div class="row align-items-start g-5">
 
@@ -656,7 +702,8 @@
                 <span>Forecast Matching</span>
                 <span>Conditional Logic</span>
                 <span>Threshold Alerts</span>
-                <span>Email Automation Design</span>
+                <span>Google Apps Script</span>
+                <span>Scheduled Email Automation</span>
                 <span>GitHub Pages</span>
               </div>
 
@@ -674,7 +721,7 @@
     </section>
 
     <!-- Why It Matters -->
-    <section class="py-5 project-section">
+    <section class="py-5">
       <div class="container">
         <div class="row align-items-start g-5">
 
@@ -709,7 +756,7 @@
     </section>
 
     <!-- Reflection -->
-    <section class="py-5">
+    <section class="py-5 project-section">
       <div class="container">
         <div class="row align-items-start g-5">
 
@@ -727,9 +774,15 @@
                 process live and forecast data, apply decision logic, and display a result through a user-friendly interface.
               </p>
 
+              <p>
+                It also demonstrates an important system design decision: separating the public front-end from the private
+                automation layer. The website can safely display NOAA data, while Google Apps Script can run privately on
+                a schedule and send email alerts without exposing credentials.
+              </p>
+
               <p class="mb-0">
-                It also shows that useful systems do not always need to be large. A focused tool can reduce manual checking,
-                support better timing, and turn raw data into information that is easy to act on.
+                The same architecture could be applied to facilities monitoring, equipment alerts, inventory thresholds,
+                weather notifications, or any process where users need to know when data reaches a specific condition.
               </p>
             </div>
           </div>
@@ -781,7 +834,7 @@
       - Matches river level against play spot ranges
 
       Private automation:
-      - Email should run from Google Apps Script or another private backend
+      - Email alerts run separately through Google Apps Script
       - Do not place email credentials in this public GitHub Pages file
     */
 
