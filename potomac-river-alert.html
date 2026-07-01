@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Potomac River Level Alert System | Achille Prete</title>
-  <meta name="description" content="Working river gauge monitoring prototype that checks NOAA/NWPS Potomac River levels and compares them against a preferred kayaking range.">
+  <title>Potomac River Play Spot Alert System | Achille Prete</title>
+  <meta name="description" content="Working river gauge monitoring prototype that checks NOAA BRKM2 river data, compares the Potomac level against kayaking play spot ranges, and supports scheduled email alerts.">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,7 +12,7 @@
   <!-- Main Portfolio CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 
-  <!-- Small page-specific styles -->
+  <!-- Page-specific styles -->
   <style>
     .status-good {
       color: #22c55e;
@@ -54,18 +54,94 @@
       box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.12);
     }
 
-    .code-source {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      word-break: break-word;
-    }
-
     .email-note {
       color: #94a3b8;
       font-size: 0.95rem;
       border-top: 1px solid rgba(148, 163, 184, 0.25);
       padding-top: 1rem;
       margin-top: 1rem;
+    }
+
+    .spot-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .spot-table th,
+    .spot-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      color: #cbd5e1;
+    }
+
+    .spot-table th {
+      color: #ffffff;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    .spot-table tr.in-range td {
+      color: #dcfce7;
+      background: rgba(34, 197, 94, 0.12);
+    }
+
+    .spot-table tr.not-in-range td {
+      color: #94a3b8;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pill-good {
+      background: rgba(34, 197, 94, 0.16);
+      color: #86efac;
+    }
+
+    .pill-muted {
+      background: rgba(148, 163, 184, 0.14);
+      color: #cbd5e1;
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: #cbd5e1;
+    }
+
+    .mini-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    .code-source {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      word-break: break-word;
+    }
+
+    .logic-box {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 16px;
+      padding: 22px;
+      height: 100%;
+    }
+
+    .logic-box h3 {
+      color: #ffffff;
+    }
+
+    .logic-box p {
+      color: #94a3b8;
     }
   </style>
 </head>
@@ -103,22 +179,23 @@
 
         <div class="col-lg-8">
           <p class="eyebrow mb-3">
-            NOAA API • Data Monitoring • Automation • Threshold Logic
+            NOAA API • River Data • Automation • Email Alert Design
           </p>
 
           <h1 class="display-5 fw-bold mb-4">
-            Potomac River Level Alert System
+            Potomac River Play Spot Alert System
           </h1>
 
           <p class="lead mb-4">
-            A working river gauge monitoring prototype that retrieves the latest available
-            Potomac River level from NOAA’s National Water Prediction Service and compares it
-            against a preferred kayaking range.
+            A working river monitoring prototype that retrieves the latest available Potomac River level
+            from NOAA’s BRKM2 gauge, compares it against kayaking play spot ranges, and supports
+            scheduled email alerts for daily planning.
           </p>
 
           <p class="hero-summary mb-4">
-            This project connects public water data, JavaScript, threshold logic, and alert design
-            to support faster decision-making for river planning.
+            This project turns public river gauge data into a practical decision-support tool for kayaking:
+            which features may be working now, what may be working after work, and whether the water is
+            expected to rise, drop, or stay about the same.
           </p>
 
           <div class="d-flex flex-wrap gap-2">
@@ -131,26 +208,26 @@
         <div class="col-lg-4 mt-5 mt-lg-0">
           <div class="project-summary-card">
             <p class="section-label">Project Type</p>
-            <h2 class="h5 fw-bold mb-3">Live Data Monitoring</h2>
+            <h2 class="h5 fw-bold mb-3">Live Data Alert System</h2>
 
             <div class="summary-item">
               <span>Gauge</span>
-              <strong>BRKM2</strong>
+              <strong>NOAA BRKM2</strong>
             </div>
 
             <div class="summary-item">
-              <span>Data Source</span>
-              <strong>NOAA/NWPS API</strong>
+              <span>Decision Logic</span>
+              <strong>Play spot min / max ranges</strong>
             </div>
 
             <div class="summary-item">
-              <span>Logic</span>
-              <strong>Minimum / maximum thresholds</strong>
+              <span>Forecast Target</span>
+              <strong>6:30 PM</strong>
             </div>
 
             <div class="summary-item">
-              <span>Output</span>
-              <strong>Dashboard + alert design</strong>
+              <span>Email Schedule</span>
+              <strong>6:00 AM and 4:00 PM</strong>
             </div>
           </div>
         </div>
@@ -169,7 +246,7 @@
           <div class="col-lg-4">
             <p class="section-label">Overview</p>
             <h2 class="fw-bold mb-3">
-              Turning NOAA river gauge data into a useful decision tool.
+              Turning river gauge data into a kayaking planning tool.
             </h2>
           </div>
 
@@ -177,19 +254,19 @@
             <div class="content-card">
               <p>
                 This project is a working prototype for an automated river monitoring system designed
-                to help kayakers decide when Potomac River conditions are within a preferred paddling range.
+                around a real kayaking decision: which Potomac River play spots may be working today.
               </p>
 
               <p>
-                As a kayaker, checking river levels is part of the planning process. Instead of manually
-                visiting the gauge website multiple times, this page retrieves the latest available river level
-                from NOAA’s National Water Prediction Service API when the page loads.
+                Instead of checking the NOAA gauge manually and comparing the level against a separate
+                play spot table, the system retrieves the latest available BRKM2 level, checks the forecast
+                for 6:30 PM, and compares both values against a stored list of play spot ranges.
               </p>
 
               <p class="mb-0">
-                The system compares the current level with a user-defined minimum and maximum range.
-                This demonstrates how public data, automation, and simple decision logic can support
-                faster and better planning.
+                The result is a dashboard and email alert design that can show which features are currently
+                in range, which features may be in range after work, and whether the water is expected to
+                rise, drop, or stay about the same.
               </p>
             </div>
           </div>
@@ -206,28 +283,28 @@
           <div class="col-lg-4">
             <p class="section-label">Problem</p>
             <h2 class="fw-bold mb-3">
-              River levels change quickly, and manual checking is inefficient.
+              River levels change, and each play spot works at a different range.
             </h2>
           </div>
 
           <div class="col-lg-8">
             <div class="content-card">
               <p>
-                River levels can change throughout the day depending on rain, upstream conditions,
-                dam releases, and seasonal flow. For kayakers, timing matters. A level that is too low
-                may not be worth the trip, while a level that is too high may create unsafe conditions.
+                Potomac River kayaking features do not all work at the same level. A river level that is good
+                for one wave or hole may be too low or too high for another. This creates a repeated manual process:
+                check the river gauge, compare the number to multiple ranges, then decide whether it is worth going.
               </p>
 
               <p>
-                Manually checking the same website repeatedly is inefficient, especially when the user
-                only cares about a specific range of values.
+                This is especially useful for after-work kayaking. A morning email can help with planning the day,
+                while a 4:00 PM update can help decide whether it is worth preparing to paddle around 6:30 PM.
               </p>
 
               <ul class="project-list mb-0">
-                <li>River conditions can change throughout the day.</li>
+                <li>Each Potomac play spot has a different minimum and maximum level.</li>
                 <li>Manual checking takes time and can be easy to forget.</li>
-                <li>The user may only care when the level is inside a specific kayaking range.</li>
-                <li>A simple dashboard or alert can help the user make faster decisions.</li>
+                <li>The water may rise or drop before the user is available to kayak.</li>
+                <li>A scheduled alert can support faster and better planning.</li>
               </ul>
             </div>
           </div>
@@ -243,10 +320,11 @@
         <div class="row mb-4">
           <div class="col-lg-8">
             <p class="section-label">Solution</p>
-            <h2 class="fw-bold mb-3">Live gauge check with threshold logic</h2>
+            <h2 class="fw-bold mb-3">Live gauge check, forecast comparison, and play spot matching</h2>
             <p class="text-muted mb-0">
               The system checks NOAA’s NWPS API for the BRKM2 gauge, reads the latest available
-              Potomac River level, compares it with a preferred kayaking range, and displays the current status.
+              river level, checks the forecast level closest to 6:30 PM, and matches those levels against
+              all stored play spot ranges.
             </p>
           </div>
         </div>
@@ -258,7 +336,7 @@
               <span class="step-number">01</span>
               <h3 class="h6 fw-bold">Call NOAA API</h3>
               <p class="text-muted mb-0">
-                JavaScript requests the observed stage/flow data for gauge BRKM2.
+                JavaScript requests observed and forecast stage data for gauge BRKM2.
               </p>
             </div>
           </div>
@@ -266,9 +344,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">02</span>
-              <h3 class="h6 fw-bold">Read Latest Level</h3>
+              <h3 class="h6 fw-bold">Read Levels</h3>
               <p class="text-muted mb-0">
-                The page extracts the latest available river level value from the API response.
+                The system extracts the latest current level and the forecast value closest to 6:30 PM.
               </p>
             </div>
           </div>
@@ -276,9 +354,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">03</span>
-              <h3 class="h6 fw-bold">Compare Range</h3>
+              <h3 class="h6 fw-bold">Match Play Spots</h3>
               <p class="text-muted mb-0">
-                The level is compared with the preferred minimum and maximum range.
+                Each level is compared against every play spot minimum and maximum range.
               </p>
             </div>
           </div>
@@ -286,9 +364,9 @@
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
               <span class="step-number">04</span>
-              <h3 class="h6 fw-bold">Display Status</h3>
+              <h3 class="h6 fw-bold">Send Alert</h3>
               <p class="text-muted mb-0">
-                The dashboard shows whether the river is below, within, or above the selected range.
+                A private scheduled script can send daily email alerts at 6:00 AM and 4:00 PM.
               </p>
             </div>
           </div>
@@ -304,33 +382,34 @@
         <div class="row mb-4">
           <div class="col-lg-8">
             <p class="section-label">Live Dashboard</p>
-            <h2 class="fw-bold mb-3">Latest available Potomac River level</h2>
+            <h2 class="fw-bold mb-3">Current level and 6:30 PM forecast</h2>
             <p class="text-muted mb-0">
-              This dashboard retrieves the latest available BRKM2 gauge value from NOAA’s National Water
-              Prediction Service when the page loads. It is not a forecast and should not replace safety checks.
+              This dashboard retrieves the latest available NOAA BRKM2 river gauge data when the page loads.
+              It compares the current level with the forecast value closest to 6:30 PM.
             </p>
           </div>
         </div>
 
         <div class="river-dashboard-grid">
           <div class="river-dashboard-card river-dashboard-large">
-            <p class="dashboard-label">Current Potomac Level</p>
+            <p class="dashboard-label">Current BRKM2 Level</p>
             <div class="live-badge mb-2">
               <span class="live-dot"></span>
               <span id="dataMode">Live NOAA Data</span>
             </div>
             <h3 id="currentLevel">Loading...</h3>
-            <p id="levelStatus" class="status-warning mb-0">Checking NOAA gauge data...</p>
+            <p id="currentStatus" class="status-warning mb-0">Checking current play spots...</p>
           </div>
 
           <div class="river-dashboard-card">
-            <p class="dashboard-label">Minimum Target</p>
-            <h3 id="minTarget">3.0 ft</h3>
+            <p class="dashboard-label">6:30 PM Forecast</p>
+            <h3 id="forecastLevel">Loading...</h3>
+            <p id="forecastStatus" class="status-warning mb-0">Checking forecast...</p>
           </div>
 
           <div class="river-dashboard-card">
-            <p class="dashboard-label">Maximum Target</p>
-            <h3 id="maxTarget">4.5 ft</h3>
+            <p class="dashboard-label">Water Trend</p>
+            <h3 id="trendText">Loading...</h3>
           </div>
 
           <div class="river-dashboard-card">
@@ -344,46 +423,159 @@
           <a href="https://water.noaa.gov/gauges/brkm2" target="_blank" rel="noopener">
             NOAA National Water Prediction Service gauge BRKM2
           </a>.
-          Always verify weather, river conditions, and personal safety before kayaking.
+          Always verify weather, river conditions, access, and personal safety before kayaking.
         </p>
 
       </div>
     </section>
 
-    <!-- Email Alert -->
+    <!-- Play Spots -->
     <section class="py-5">
+      <div class="container">
+        <div class="row align-items-start g-5">
+
+          <div class="col-lg-4">
+            <p class="section-label">Play Spot Matching</p>
+            <h2 class="fw-bold mb-3">
+              Which features are in range?
+            </h2>
+            <p class="text-muted">
+              The table below compares the live BRKM2 level against each play spot range.
+              Rows highlighted in green are currently in range.
+            </p>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="content-card">
+              <div class="table-responsive">
+                <table class="spot-table">
+                  <thead>
+                    <tr>
+                      <th>Play Spot</th>
+                      <th>Range</th>
+                      <th>Boat</th>
+                      <th>Status Now</th>
+                    </tr>
+                  </thead>
+                  <tbody id="playSpotTable">
+                    <tr>
+                      <td colspan="4">Loading play spot data...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Alert -->
+    <section class="py-5 project-section">
       <div class="container">
         <div class="row align-items-start g-5">
 
           <div class="col-lg-4">
             <p class="section-label">Email Alert</p>
             <h2 class="fw-bold mb-3">
-              Notification design for when conditions are inside the selected range.
+              Daily planning emails at 6:00 AM and 4:00 PM.
             </h2>
           </div>
 
           <div class="col-lg-8">
             <div class="email-preview">
               <p class="email-subject">
-                Subject: Potomac River Level Alert
+                Subject: Potomac Kayaking Alert
               </p>
 
               <p>
-                The Potomac River level is currently <strong id="emailLevel">checking...</strong>.
+                Current BRKM2 level: <strong id="emailCurrentLevel">checking...</strong>
               </p>
 
               <p>
-                Your preferred kayaking range is <strong>3.0 ft to 4.5 ft</strong>.
+                Forecast near 6:30 PM: <strong id="emailForecastLevel">checking...</strong>
               </p>
 
-              <p class="mb-0" id="emailMessage">
-                The system is checking whether conditions are inside your selected range.
+              <p>
+                Trend: <strong id="emailTrend">checking...</strong>
               </p>
+
+              <p class="fw-bold mb-2">
+                Spots currently in range:
+              </p>
+              <ul id="emailCurrentSpots" class="mini-list">
+                <li>Checking current play spots...</li>
+              </ul>
+
+              <p class="fw-bold mt-4 mb-2">
+                Spots expected to be in range around 6:30 PM:
+              </p>
+              <ul id="emailForecastSpots" class="mini-list">
+                <li>Checking forecast play spots...</li>
+              </ul>
 
               <p class="email-note mb-0">
-                For security, the public GitHub Pages website only displays the live dashboard.
-                The email alert would run from a private scheduled script so email credentials are not exposed
-                in the browser.
+                For security, the public GitHub Pages page only displays the live dashboard.
+                The actual email alert should run from a private scheduled script, such as Google Apps Script,
+                so email credentials are not exposed in the browser.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Logic Explanation -->
+    <section class="py-5">
+      <div class="container">
+
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <p class="section-label">Alert Logic</p>
+            <h2 class="fw-bold mb-3">How the system decides what to report</h2>
+          </div>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-md-6 col-xl-3">
+            <div class="logic-box">
+              <h3 class="h6 fw-bold">Current Level</h3>
+              <p class="mb-0">
+                The system retrieves the latest available BRKM2 stage value from NOAA and checks which
+                play spots are currently within range.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="logic-box">
+              <h3 class="h6 fw-bold">6:30 PM Forecast</h3>
+              <p class="mb-0">
+                The system searches the NOAA forecast values and selects the forecast reading closest
+                to 6:30 PM, which is the target time for after-work kayaking.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="logic-box">
+              <h3 class="h6 fw-bold">Trend</h3>
+              <p class="mb-0">
+                If the 6:30 PM forecast is more than 0.10 ft higher than the current level, the water is
+                reported as rising. If it is more than 0.10 ft lower, it is reported as dropping.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="logic-box">
+              <h3 class="h6 fw-bold">Email Schedule</h3>
+              <p class="mb-0">
+                The planned automation sends one email at 6:00 AM for daily planning and another at
+                4:00 PM for an updated after-work decision.
               </p>
             </div>
           </div>
@@ -399,7 +591,7 @@
         <div class="row mb-4">
           <div class="col-lg-8">
             <p class="section-label">Key Features</p>
-            <h2 class="fw-bold mb-3">Designed around a repeated decision</h2>
+            <h2 class="fw-bold mb-3">Designed around a real repeated decision</h2>
           </div>
         </div>
 
@@ -416,27 +608,27 @@
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Custom Thresholds</h3>
+              <h3 class="h6 fw-bold">Feature-Specific Ranges</h3>
               <p class="text-muted mb-0">
-                Compares the river level against a selected minimum and maximum value.
+                Compares the river level against each Potomac play spot’s minimum and maximum range.
               </p>
             </div>
           </div>
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Status Logic</h3>
+              <h3 class="h6 fw-bold">Forecast Decision Support</h3>
               <p class="text-muted mb-0">
-                Displays whether the river is below, within, or above the preferred kayaking range.
+                Checks which features may be working around 6:30 PM, not just at the current moment.
               </p>
             </div>
           </div>
 
           <div class="col-md-6 col-xl-3">
             <div class="skill-card h-100">
-              <h3 class="h6 fw-bold">Expandable Design</h3>
+              <h3 class="h6 fw-bold">Scheduled Email Design</h3>
               <p class="text-muted mb-0">
-                Could be expanded with email alerts, historical logs, charts, or multiple river gauges.
+                Supports a private automation that sends alerts every day at 6:00 AM and 4:00 PM.
               </p>
             </div>
           </div>
@@ -461,16 +653,18 @@
                 <span>NOAA NWPS API</span>
                 <span>JavaScript Fetch</span>
                 <span>JSON Parsing</span>
+                <span>Forecast Matching</span>
                 <span>Conditional Logic</span>
-                <span>Data Monitoring</span>
                 <span>Threshold Alerts</span>
-                <span>Workflow Automation</span>
+                <span>Email Automation Design</span>
                 <span>GitHub Pages</span>
               </div>
 
               <p class="code-source mt-4 mb-0">
-                API endpoint used by the dashboard:
+                API endpoints used by the dashboard:
                 https://api.water.noaa.gov/nwps/v1/gauges/BRKM2/stageflow/observed
+                and
+                https://api.water.noaa.gov/nwps/v1/gauges/BRKM2/stageflow/forecast
               </p>
             </div>
           </div>
@@ -498,9 +692,14 @@
                 personal decision-making tool.
               </p>
 
+              <p>
+                Instead of only displaying a river level, the system connects data to a real decision:
+                whether specific kayaking features are likely to be working now or after work.
+              </p>
+
               <p class="mb-0">
-                The system does not need to be large or complex to be valuable. By automating a repeated task,
-                it saves time, reduces manual checking, and gives the user useful information at the right moment.
+                The same logic could be applied to facilities monitoring, equipment alerts, inventory thresholds,
+                weather notifications, or any process where users need to know when data reaches a specific condition.
               </p>
             </div>
           </div>
@@ -525,12 +724,12 @@
             <div class="content-card">
               <p>
                 This project shows the ability to identify a real-world need, connect to an external data source,
-                process live data, apply decision logic, and display a result through a user-friendly interface.
+                process live and forecast data, apply decision logic, and display a result through a user-friendly interface.
               </p>
 
               <p class="mb-0">
-                The same logic could be applied to facilities monitoring, equipment alerts, inventory thresholds,
-                weather notifications, or any process where users need to know when data reaches a specific condition.
+                It also shows that useful systems do not always need to be large. A focused tool can reduce manual checking,
+                support better timing, and turn raw data into information that is easy to act on.
               </p>
             </div>
           </div>
@@ -572,142 +771,293 @@
   <!-- Live NOAA River Gauge Script -->
   <script>
     /*
-      Potomac River Level Alert System
+      Potomac River Play Spot Alert System
       Gauge: BRKM2
       Source: NOAA National Water Prediction Service API
-      Endpoint: https://api.water.noaa.gov/nwps/v1/gauges/BRKM2/stageflow/observed
 
-      Notes:
-      - GitHub Pages can display live API data with JavaScript.
-      - Email should not be sent directly from this public page because credentials would be exposed.
-      - Email alerts should run from a private scheduled script or backend service.
+      Public website:
+      - Displays live current data
+      - Displays forecast closest to 6:30 PM
+      - Matches river level against play spot ranges
+
+      Private automation:
+      - Email should run from Google Apps Script or another private backend
+      - Do not place email credentials in this public GitHub Pages file
     */
 
     const gaugeId = "BRKM2";
-    const minLevel = 3.0;
-    const maxLevel = 4.5;
-    const apiUrl = `https://api.water.noaa.gov/nwps/v1/gauges/${gaugeId}/stageflow/observed`;
+    const observedUrl = `https://api.water.noaa.gov/nwps/v1/gauges/${gaugeId}/stageflow/observed`;
+    const forecastUrl = `https://api.water.noaa.gov/nwps/v1/gauges/${gaugeId}/stageflow/forecast`;
 
-    document.getElementById("minTarget").textContent = minLevel.toFixed(1) + " ft";
-    document.getElementById("maxTarget").textContent = maxLevel.toFixed(1) + " ft";
+    const trendTolerance = 0.10;
 
-    async function getRiverLevel() {
-      const currentLevel = document.getElementById("currentLevel");
-      const levelStatus = document.getElementById("levelStatus");
-      const lastUpdated = document.getElementById("lastUpdated");
-      const emailLevel = document.getElementById("emailLevel");
-      const emailMessage = document.getElementById("emailMessage");
+    const playSpots = [
+      { name: "SOS Wave", min: 2.5, max: 3.2, boat: "Playboat" },
+      { name: "Bloody Good", min: 2.57, max: 3.3, boat: "Playboat" },
+      { name: "Odeck 3 Hole", min: 2.7, max: 3.0, boat: "Playboat" },
+      { name: "MD Chute", min: 2.5, max: 4.0, boat: "Playboat" },
+      { name: "VA Chute", min: 2.7, max: 4.2, boat: "Playboat" },
+      { name: "Wet Bottom Hole", min: 2.5, max: 4.2, boat: "Playboat" },
+      { name: "Wet Bottom Wave", min: 2.8, max: 3.8, boat: "Longboat" },
+      { name: "Annies", min: 2.7, max: 3.0, boat: "Playboat" },
+      { name: "Small Green Wave", min: 2.7, max: 3.31, boat: "RPM Style" },
+      { name: "George Washing Machine", min: 2.0, max: 5.0, boat: "Playboat" },
+      { name: "Violetts Wave", min: 2.0, max: 6.0, boat: "Playboat" },
+      { name: "Su-Nami Wave", min: 2.8, max: 3.2, boat: "RPM Style" },
+      { name: "Horseshoe Wave", min: 2.5, max: 2.9, boat: "Playboat" },
+      { name: "Portage Rapid Waves", min: 2.5, max: 2.9, boat: "RPM Style" },
+      { name: "Bikini Wax", min: 2.6, max: 2.9, boat: "RPM Style" }
+    ];
 
+    async function initializeRiverDashboard() {
       try {
-        const response = await fetch(apiUrl);
-
-        if (!response.ok) {
-          throw new Error("NOAA API request failed with status " + response.status);
+        const observedResponse = await fetch(observedUrl);
+        if (!observedResponse.ok) {
+          throw new Error("NOAA observed API request failed with status " + observedResponse.status);
         }
 
-        const data = await response.json();
-        const reading = extractLatestStageReading(data);
+        const observedData = await observedResponse.json();
+        const observedReadings = extractStageReadings(observedData);
+        const currentReading = getLatestReading(observedReadings);
 
-        if (!reading || isNaN(reading.level)) {
-          throw new Error("Could not find a valid stage value in the NOAA API response.");
+        if (!currentReading) {
+          throw new Error("No valid current stage reading was found.");
         }
 
-        const level = reading.level;
-        const units = reading.units || "ft";
+        let forecastReading = null;
 
-        currentLevel.textContent = level.toFixed(2) + " " + units;
-        emailLevel.textContent = level.toFixed(2) + " " + units;
+        try {
+          const forecastResponse = await fetch(forecastUrl);
 
-        if (reading.time) {
-          const observedDate = new Date(reading.time);
-          lastUpdated.textContent = observedDate.toLocaleString();
-        } else {
-          lastUpdated.textContent = "Latest reading";
+          if (forecastResponse.ok) {
+            const forecastData = await forecastResponse.json();
+            const forecastReadings = extractStageReadings(forecastData);
+            forecastReading = getClosestForecastToTarget(forecastReadings, getNextTargetTime());
+          }
+        } catch (forecastError) {
+          console.warn("Forecast data could not be loaded.", forecastError);
         }
 
-        if (level >= minLevel && level <= maxLevel) {
-          levelStatus.textContent = "Within preferred kayaking range";
-          levelStatus.className = "status-good mb-0";
-
-          emailMessage.innerHTML =
-            "The river level is inside the selected range. Conditions may be suitable for kayaking. Please check weather, safety conditions, and local guidance before going.";
-        } else if (level < minLevel) {
-          levelStatus.textContent = "Below preferred kayaking range";
-          levelStatus.className = "status-warning mb-0";
-
-          emailMessage.innerHTML =
-            "The river level is below the selected range. It may be too low for the preferred kayaking conditions.";
-        } else {
-          levelStatus.textContent = "Above preferred kayaking range";
-          levelStatus.className = "status-danger mb-0";
-
-          emailMessage.innerHTML =
-            "The river level is above the selected range. Higher water may create stronger or unsafe conditions.";
-        }
+        updateDashboard(currentReading, forecastReading);
+        updatePlaySpotTable(currentReading.level);
+        updateEmailPreview(currentReading, forecastReading);
 
       } catch (error) {
         console.error(error);
-
-        currentLevel.textContent = "Unavailable";
-        levelStatus.textContent = "Unable to load NOAA river data";
-        levelStatus.className = "status-warning mb-0";
-        lastUpdated.textContent = "Error";
-        emailLevel.textContent = "unavailable";
-        emailMessage.textContent =
-          "The live NOAA value could not be loaded. Please check the NOAA gauge page directly.";
+        showErrorState();
       }
     }
 
-    function extractLatestStageReading(data) {
-      /*
-        The NOAA NWPS API can return observed stage/flow values in nested objects.
-        This function first checks the most likely locations, then falls back to a broader search.
-      */
+    function updateDashboard(currentReading, forecastReading) {
+      const currentLevel = document.getElementById("currentLevel");
+      const currentStatus = document.getElementById("currentStatus");
+      const forecastLevel = document.getElementById("forecastLevel");
+      const forecastStatus = document.getElementById("forecastStatus");
+      const trendText = document.getElementById("trendText");
+      const lastUpdated = document.getElementById("lastUpdated");
 
-      const possibleArrays = [
-        data?.observed?.data,
-        data?.observed?.values,
-        data?.data,
-        data?.values,
-        data?.stageflow?.observed?.data,
-        data?.stageflow?.observed?.values
-      ];
+      const currentSpots = getSpotsInRange(currentReading.level);
 
-      for (const arr of possibleArrays) {
-        if (Array.isArray(arr) && arr.length > 0) {
-          const reading = findLatestUsableReading(arr, data);
-          if (reading) {
-            return reading;
-          }
+      currentLevel.textContent = formatLevel(currentReading.level, currentReading.units);
+
+      if (currentSpots.length > 0) {
+        currentStatus.textContent = `${currentSpots.length} play spot(s) currently in range`;
+        currentStatus.className = "status-good mb-0";
+      } else {
+        currentStatus.textContent = "No listed play spots currently in range";
+        currentStatus.className = "status-warning mb-0";
+      }
+
+      if (currentReading.time) {
+        lastUpdated.textContent = new Date(currentReading.time).toLocaleString();
+      } else {
+        lastUpdated.textContent = "Latest reading";
+      }
+
+      if (forecastReading) {
+        const forecastSpots = getSpotsInRange(forecastReading.level);
+        forecastLevel.textContent = formatLevel(forecastReading.level, forecastReading.units);
+
+        if (forecastSpots.length > 0) {
+          forecastStatus.textContent = `${forecastSpots.length} play spot(s) forecast in range`;
+          forecastStatus.className = "status-good mb-0";
+        } else {
+          forecastStatus.textContent = "No listed play spots forecast in range";
+          forecastStatus.className = "status-warning mb-0";
         }
+
+        trendText.textContent = getTrendText(currentReading.level, forecastReading.level);
+      } else {
+        forecastLevel.textContent = "Unavailable";
+        forecastStatus.textContent = "Forecast value could not be loaded";
+        forecastStatus.className = "status-warning mb-0";
+        trendText.textContent = "Unavailable";
       }
-
-      const collected = [];
-      collectPossibleReadings(data, collected);
-
-      if (collected.length > 0) {
-        return findLatestUsableReading(collected, data);
-      }
-
-      return null;
     }
 
-    function findLatestUsableReading(readings, fullData) {
+    function updatePlaySpotTable(currentLevel) {
+      const tableBody = document.getElementById("playSpotTable");
+
+      tableBody.innerHTML = playSpots.map(spot => {
+        const inRange = isSpotInRange(currentLevel, spot);
+        const rowClass = inRange ? "in-range" : "not-in-range";
+        const statusPill = inRange
+          ? `<span class="pill pill-good">In range</span>`
+          : `<span class="pill pill-muted">Out of range</span>`;
+
+        return `
+          <tr class="${rowClass}">
+            <td>${spot.name}</td>
+            <td>${spot.min}–${spot.max} ft</td>
+            <td>${spot.boat}</td>
+            <td>${statusPill}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function updateEmailPreview(currentReading, forecastReading) {
+      const emailCurrentLevel = document.getElementById("emailCurrentLevel");
+      const emailForecastLevel = document.getElementById("emailForecastLevel");
+      const emailTrend = document.getElementById("emailTrend");
+      const emailCurrentSpots = document.getElementById("emailCurrentSpots");
+      const emailForecastSpots = document.getElementById("emailForecastSpots");
+
+      emailCurrentLevel.textContent = formatLevel(currentReading.level, currentReading.units);
+
+      const currentSpots = getSpotsInRange(currentReading.level);
+      emailCurrentSpots.innerHTML = formatSpotList(currentSpots);
+
+      if (forecastReading) {
+        emailForecastLevel.textContent = formatLevel(forecastReading.level, forecastReading.units);
+        emailTrend.textContent = getTrendText(currentReading.level, forecastReading.level);
+
+        const forecastSpots = getSpotsInRange(forecastReading.level);
+        emailForecastSpots.innerHTML = formatSpotList(forecastSpots);
+      } else {
+        emailForecastLevel.textContent = "unavailable";
+        emailTrend.textContent = "forecast unavailable";
+        emailForecastSpots.innerHTML = "<li>Forecast play spot matching is unavailable.</li>";
+      }
+    }
+
+    function formatSpotList(spots) {
+      if (!spots || spots.length === 0) {
+        return "<li>No listed play spots are in range.</li>";
+      }
+
+      return spots.map(spot => {
+        return `<li>${spot.name} (${spot.min}–${spot.max} ft, ${spot.boat})</li>`;
+      }).join("");
+    }
+
+    function getSpotsInRange(level) {
+      return playSpots.filter(spot => isSpotInRange(level, spot));
+    }
+
+    function isSpotInRange(level, spot) {
+      return level >= spot.min && level <= spot.max;
+    }
+
+    function getTrendText(currentLevel, forecastLevel) {
+      const difference = forecastLevel - currentLevel;
+
+      if (difference > trendTolerance) {
+        return "Rising";
+      }
+
+      if (difference < -trendTolerance) {
+        return "Dropping";
+      }
+
+      return "Staying about the same";
+    }
+
+    function getNextTargetTime() {
+      const target = new Date();
+      target.setHours(18, 30, 0, 0);
+
+      if (new Date() > target) {
+        target.setDate(target.getDate() + 1);
+      }
+
+      return target;
+    }
+
+    function getLatestReading(readings) {
+      if (!readings || readings.length === 0) {
+        return null;
+      }
+
       const usable = readings
-        .map(item => normalizeReading(item, fullData))
-        .filter(item => item && !isNaN(item.level));
+        .filter(reading => reading && !isNaN(reading.level))
+        .sort((a, b) => {
+          const timeA = a.time ? new Date(a.time).getTime() : 0;
+          const timeB = b.time ? new Date(b.time).getTime() : 0;
+          return timeA - timeB;
+        });
+
+      return usable.length > 0 ? usable[usable.length - 1] : null;
+    }
+
+    function getClosestForecastToTarget(readings, targetTime) {
+      if (!readings || readings.length === 0) {
+        return null;
+      }
+
+      const targetMs = targetTime.getTime();
+
+      const usable = readings.filter(reading => {
+        if (!reading || isNaN(reading.level) || !reading.time) {
+          return false;
+        }
+
+        return new Date(reading.time).getTime() >= Date.now() - 60 * 60 * 1000;
+      });
 
       if (usable.length === 0) {
         return null;
       }
 
       usable.sort((a, b) => {
-        const timeA = a.time ? new Date(a.time).getTime() : 0;
-        const timeB = b.time ? new Date(b.time).getTime() : 0;
-        return timeA - timeB;
+        const diffA = Math.abs(new Date(a.time).getTime() - targetMs);
+        const diffB = Math.abs(new Date(b.time).getTime() - targetMs);
+        return diffA - diffB;
       });
 
-      return usable[usable.length - 1];
+      return usable[0];
+    }
+
+    function extractStageReadings(data) {
+      const readings = [];
+
+      collectStageReadings(data, readings, data);
+
+      return readings;
+    }
+
+    function collectStageReadings(obj, readings, fullData) {
+      if (!obj || typeof obj !== "object") {
+        return;
+      }
+
+      const normalized = normalizeReading(obj, fullData);
+
+      if (normalized) {
+        readings.push(normalized);
+      }
+
+      for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          const value = obj[key];
+
+          if (Array.isArray(value)) {
+            value.forEach(child => collectStageReadings(child, readings, fullData));
+          } else if (value && typeof value === "object") {
+            collectStageReadings(value, readings, fullData);
+          }
+        }
+      }
     }
 
     function normalizeReading(item, fullData) {
@@ -716,8 +1066,8 @@
       }
 
       /*
-        Prefer stage-related values. Many NWPS responses use primary/secondary values.
-        For this gauge, the page is focused on stage/height in feet.
+        NOAA stage/flow data can include both stage and flow.
+        This project uses stage/height in feet because the play spot ranges are based on gauge height.
       */
       const rawLevel =
         item.stage ??
@@ -725,9 +1075,14 @@
         item.value ??
         item.height ??
         item.observedValue ??
+        item.forecastValue ??
         null;
 
       const level = parseFloat(rawLevel);
+
+      if (isNaN(level)) {
+        return null;
+      }
 
       const time =
         item.validTime ??
@@ -742,12 +1097,9 @@
         item.primaryUnits ??
         item.units ??
         fullData?.observed?.primaryUnits ??
+        fullData?.forecast?.primaryUnits ??
         fullData?.primaryUnits ??
         "ft";
-
-      if (isNaN(level)) {
-        return null;
-      }
 
       return {
         level,
@@ -756,35 +1108,37 @@
       };
     }
 
-    function collectPossibleReadings(obj, collected) {
-      if (!obj || typeof obj !== "object") {
-        return;
-      }
-
-      if (
-        "primary" in obj ||
-        "stage" in obj ||
-        "value" in obj ||
-        "height" in obj ||
-        "observedValue" in obj
-      ) {
-        collected.push(obj);
-      }
-
-      for (const key in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          const value = obj[key];
-
-          if (Array.isArray(value)) {
-            value.forEach(child => collectPossibleReadings(child, collected));
-          } else if (value && typeof value === "object") {
-            collectPossibleReadings(value, collected);
-          }
-        }
-      }
+    function formatLevel(level, units) {
+      return `${level.toFixed(2)} ${units || "ft"}`;
     }
 
-    getRiverLevel();
+    function showErrorState() {
+      document.getElementById("currentLevel").textContent = "Unavailable";
+      document.getElementById("currentStatus").textContent = "Unable to load NOAA observed data";
+      document.getElementById("currentStatus").className = "status-warning mb-0";
+
+      document.getElementById("forecastLevel").textContent = "Unavailable";
+      document.getElementById("forecastStatus").textContent = "Unable to load NOAA forecast data";
+      document.getElementById("forecastStatus").className = "status-warning mb-0";
+
+      document.getElementById("trendText").textContent = "Unavailable";
+      document.getElementById("lastUpdated").textContent = "Error";
+
+      document.getElementById("emailCurrentLevel").textContent = "unavailable";
+      document.getElementById("emailForecastLevel").textContent = "unavailable";
+      document.getElementById("emailTrend").textContent = "unavailable";
+
+      document.getElementById("emailCurrentSpots").innerHTML =
+        "<li>Current play spot matching is unavailable.</li>";
+
+      document.getElementById("emailForecastSpots").innerHTML =
+        "<li>Forecast play spot matching is unavailable.</li>";
+
+      document.getElementById("playSpotTable").innerHTML =
+        '<tr><td colspan="4">Unable to load live NOAA data. Please check the NOAA gauge page directly.</td></tr>';
+    }
+
+    initializeRiverDashboard();
   </script>
 
 </body>
