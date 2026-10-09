@@ -265,14 +265,7 @@
 
   <script>
     // Yearly results calculated using SQL in Databricks.
-    const yearlyData = [
-      { year: 2020, awards: 129, funding: 51490723 },
-      { year: 2021, awards: 94,  funding: 78696803 },
-      { year: 2022, awards: 120, funding: 86564926 },
-      { year: 2023, awards: 124, funding: 73490569 },
-      { year: 2024, awards: 85,  funding: 38412481 },
-      { year: 2025, awards: 80,  funding: 32289798 }
-    ];
+  let yearlyData = [];
 
     const dollars = new Intl.NumberFormat("en-US", {
       style: "currency",
@@ -364,10 +357,62 @@
       });
     }
 
-    document.getElementById("year-filter")
-      .addEventListener("change", updateDashboard);
+    const yearFilter = document.getElementById("year-filter");
+yearFilter.disabled = true;
+
+const status = document.createElement("p");
+status.className = "note";
+status.setAttribute("role", "status");
+status.textContent = "Loading reporting data…";
+document.querySelector(".toolbar").after(status);
+
+async function loadReportingData() {
+  try {
+    const response = await fetch(
+      "assets/data/umd-funding-summary.json",
+      { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+      throw new Error("Reporting file could not be loaded.");
+    }
+
+    const report = await response.json();
+
+    if (
+      !Array.isArray(report.yearly) ||
+      report.yearly.length === 0 ||
+      !report.yearly.every(item =>
+        Number.isInteger(item.year) &&
+        Number.isInteger(item.awards) &&
+        item.awards > 0 &&
+        Number.isFinite(item.funding) &&
+        item.funding >= 0
+      )
+    ) {
+      throw new Error("Reporting data is invalid.");
+    }
+
+    yearlyData = report.yearly.sort((a, b) => a.year - b.year);
 
     updateDashboard();
+    yearFilter.disabled = false;
+
+    const publishedAt = new Date(report.updated_at);
+    status.textContent = Number.isNaN(publishedAt.getTime())
+      ? "Reporting data loaded from Databricks."
+      : "Report published from Databricks: " +
+        publishedAt.toLocaleString();
+
+  } catch (error) {
+    status.textContent =
+      "Reporting data is unavailable. Please reload the page later.";
+    console.error(error);
+  }
+}
+
+yearFilter.addEventListener("change", updateDashboard);
+loadReportingData();
   </script>
 </body>
 </html>
