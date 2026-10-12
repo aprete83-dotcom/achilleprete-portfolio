@@ -223,8 +223,21 @@
       </div>
     </section>
 
-    <section class="panel">
-      <h2>Yearly breakdown</h2>
+    <section class="panel" style="margin-bottom: 24px;">
+  <h2>Five-year funding trend</h2>
+  <p class="note">
+    Funding recorded for NSF awards that started at UMD College Park
+    in each of the latest five completed calendar years.
+    These are totals attached to awards, not annual receipts or spending.
+    The current year is excluded because it is incomplete.
+  </p>
+
+  <div id="funding-trend"></div>
+  <p id="funding-trend-summary" class="note"></p>
+</section>
+
+<section class="panel">
+  <h2>Yearly breakdown</h2>
       <div class="table-wrap">
         <table>
           <caption class="note">Results for the selected award start years</caption>
@@ -314,8 +327,153 @@ The latest report publication time appears above the charts.
         chart.appendChild(row);
       });
     }
+function drawFundingTrend() {
+  const currentYear = new Date().getFullYear();
 
-    function updateDashboard() {
+  const rows = yearlyData.filter(item =>
+    item.year >= currentYear - 5 && item.year < currentYear
+  );
+
+  const container = document.getElementById("funding-trend");
+  const summary = document.getElementById("funding-trend-summary");
+  container.replaceChildren();
+
+  if (rows.length < 2) {
+    summary.textContent = "Not enough completed years to show a trend.";
+    return;
+  }
+
+  const width = 700;
+  const height = 300;
+  const left = 75;
+  const right = 65;
+  const top = 40;
+  const bottom = 50;
+
+  const maximum = Math.max(...rows.map(item => item.funding));
+  const scaleMaximum = maximum > 0 ? maximum * 1.15 : 1;
+  const firstYear = currentYear - 5;
+  const lastYear = currentYear - 1;
+
+  const x = year =>
+    left + ((year - firstYear) / (lastYear - firstYear))
+    * (width - left - right);
+
+  const y = funding =>
+    height - bottom - (funding / scaleMaximum)
+    * (height - top - bottom);
+
+  const namespace = "http://www.w3.org/2000/svg";
+
+  function element(tag, attributes, text) {
+    const node = document.createElementNS(namespace, tag);
+    Object.entries(attributes).forEach(([key, value]) =>
+      node.setAttribute(key, value)
+    );
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  const svg = element("svg", {
+    viewBox: `0 0 ${width} ${height}`,
+    role: "img",
+    "aria-label":
+      `Funding for awards started in ${firstYear} through ${lastYear}`,
+    style: "width:100%;height:auto;display:block;"
+  });
+
+  svg.appendChild(element("desc", {},
+    rows.map(item =>
+      `${item.year}: ${dollars.format(item.funding)}`
+    ).join(". ")
+  ));
+
+  // Funding axis starts at zero.
+  for (let tick = 0; tick <= 4; tick++) {
+    const amount = scaleMaximum * tick / 4;
+    const position = y(amount);
+
+    svg.appendChild(element("line", {
+      x1: left, y1: position,
+      x2: width - right, y2: position,
+      stroke: "#334155"
+    }));
+
+    svg.appendChild(element("text", {
+      x: left - 10, y: position + 4,
+      fill: "#cbd5e1",
+      "text-anchor": "end",
+      "font-size": 12
+    }, `$${(amount / 1000000).toFixed(0)}M`));
+  }
+
+  // Break the line if a calendar year is missing.
+  const path = rows.map((item, index) => {
+    const command = index === 0 ||
+      item.year !== rows[index - 1].year + 1 ? "M" : "L";
+    return `${command} ${x(item.year)} ${y(item.funding)}`;
+  }).join(" ");
+
+  svg.appendChild(element("path", {
+    d: path,
+    fill: "none",
+    stroke: "#60a5fa",
+    "stroke-width": 3
+  }));
+
+  rows.forEach(item => {
+    const point = element("circle", {
+      cx: x(item.year),
+      cy: y(item.funding),
+      r: 5,
+      fill: "#60a5fa"
+    });
+
+    point.appendChild(element("title", {},
+      `${item.year}: ${dollars.format(item.funding)}`
+    ));
+    svg.appendChild(point);
+
+    svg.appendChild(element("text", {
+      x: x(item.year),
+      y: y(item.funding) - 14,
+      fill: "#f1f5f9",
+      "text-anchor": "middle",
+      "font-size": 13
+    }, `$${(item.funding / 1000000).toFixed(2)}M`));
+
+    svg.appendChild(element("text", {
+      x: x(item.year),
+      y: height - bottom + 26,
+      fill: "#cbd5e1",
+      "text-anchor": "middle",
+      "font-size": 13
+    }, String(item.year)));
+  });
+
+  container.appendChild(svg);
+
+  const first = rows[0];
+  const last = rows[rows.length - 1];
+
+  if (first.funding > 0) {
+    const change = (last.funding / first.funding - 1) * 100;
+    const direction = change < 0 ? "lower" : "higher";
+
+    summary.textContent =
+      `Recorded funding for awards started in ${last.year} is ` +
+      `${Math.abs(change).toFixed(1)}% ${direction} than for awards ` +
+      `started in ${first.year}. Older awards have had more time ` +
+      `to receive additional funding. This comparison does not ` +
+      `measure a change in UMD's annual funding receipts.`;
+  } else {
+    summary.textContent =
+      "A percentage comparison is unavailable because the first year's total is zero.";
+  }
+}
+    
+      function updateDashboard() {
+  drawFundingTrend();
       const selectedYear = document.getElementById("year-filter").value;
       const rows = yearlyData.filter(item =>
         selectedYear === "all" || item.year === Number(selectedYear)
