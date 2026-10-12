@@ -343,33 +343,61 @@ function drawFundingTrend() {
     return;
   }
 
-  const width = 700;
-  const height = 300;
-  const left = 75;
-  const right = 65;
-  const top = 40;
+  const legend = document.createElement("p");
+
+  const fundingLabel = document.createElement("span");
+  fundingLabel.style.color = "#60a5fa";
+  fundingLabel.textContent = "● Funding — left scale";
+
+  const awardsLabel = document.createElement("span");
+  awardsLabel.style.color = "#34d399";
+  awardsLabel.textContent = "■ Awards — right scale";
+  awardsLabel.style.marginLeft = "24px";
+
+  legend.append(fundingLabel, awardsLabel);
+  container.appendChild(legend);
+
+  const width = 760;
+  const height = 340;
+  const left = 80;
+  const right = 80;
+  const top = 50;
   const bottom = 50;
 
-  const maximum = Math.max(...rows.map(item => item.funding));
-  const scaleMaximum = maximum > 0 ? maximum * 1.15 : 1;
   const firstYear = currentYear - 5;
   const lastYear = currentYear - 1;
+
+  const fundingMaximum = Math.max(
+    1,
+    Math.ceil(
+      Math.max(...rows.map(item => item.funding)) / 10000000
+    ) * 10000000
+  );
+
+  const awardsMaximum = Math.max(
+    10,
+    Math.ceil(
+      Math.max(...rows.map(item => item.awards)) / 20
+    ) * 20
+  );
 
   const x = year =>
     left + ((year - firstYear) / (lastYear - firstYear))
     * (width - left - right);
 
-  const y = funding =>
-    height - bottom - (funding / scaleMaximum)
+  const y = (value, maximum) =>
+    height - bottom - (value / maximum)
     * (height - top - bottom);
 
   const namespace = "http://www.w3.org/2000/svg";
 
   function element(tag, attributes, text) {
     const node = document.createElementNS(namespace, tag);
+
     Object.entries(attributes).forEach(([key, value]) =>
       node.setAttribute(key, value)
     );
+
     if (text !== undefined) node.textContent = text;
     return node;
   }
@@ -378,20 +406,35 @@ function drawFundingTrend() {
     viewBox: `0 0 ${width} ${height}`,
     role: "img",
     "aria-label":
-      `Funding for awards started in ${firstYear} through ${lastYear}`,
+      `Funding and award counts for awards started in ` +
+      `${firstYear} through ${lastYear}`,
     style: "width:100%;height:auto;display:block;"
   });
 
   svg.appendChild(element("desc", {},
     rows.map(item =>
-      `${item.year}: ${dollars.format(item.funding)}`
+      `${item.year}: ${dollars.format(item.funding)}, ` +
+      `${item.awards} awards`
     ).join(". ")
   ));
 
-  // Funding axis starts at zero.
+  svg.appendChild(element("text", {
+    x: left, y: 20,
+    fill: "#60a5fa",
+    "font-size": 13
+  }, "Funding ($ millions)"));
+
+  svg.appendChild(element("text", {
+    x: width - right, y: 20,
+    fill: "#34d399",
+    "text-anchor": "end",
+    "font-size": 13
+  }, "Number of awards"));
+
+  // Both scales start at zero.
   for (let tick = 0; tick <= 4; tick++) {
-    const amount = scaleMaximum * tick / 4;
-    const position = y(amount);
+    const fraction = tick / 4;
+    const position = y(fraction, 1);
 
     svg.appendChild(element("line", {
       x1: left, y1: position,
@@ -400,78 +443,111 @@ function drawFundingTrend() {
     }));
 
     svg.appendChild(element("text", {
-      x: left - 10, y: position + 4,
-      fill: "#cbd5e1",
+      x: left - 12, y: position + 4,
+      fill: "#60a5fa",
       "text-anchor": "end",
       "font-size": 12
-    }, `$${(amount / 1000000).toFixed(0)}M`));
+    }, `$${(fundingMaximum * fraction / 1000000).toFixed(0)}M`));
+
+    svg.appendChild(element("text", {
+      x: width - right + 12, y: position + 4,
+      fill: "#34d399",
+      "text-anchor": "start",
+      "font-size": 12
+    }, String(awardsMaximum * fraction)));
   }
 
-  // Break the line if a calendar year is missing.
-  const path = rows.map((item, index) => {
-    const command = index === 0 ||
-      item.year !== rows[index - 1].year + 1 ? "M" : "L";
-    return `${command} ${x(item.year)} ${y(item.funding)}`;
-  }).join(" ");
+  function addSeries(field, maximum, color, dashed) {
+    const path = rows.map((item, index) => {
+      const command = index === 0 ||
+        item.year !== rows[index - 1].year + 1 ? "M" : "L";
 
-  svg.appendChild(element("path", {
-    d: path,
-    fill: "none",
-    stroke: "#60a5fa",
-    "stroke-width": 3
-  }));
+      return `${command} ${x(item.year)} ${y(item[field], maximum)}`;
+    }).join(" ");
 
-  rows.forEach(item => {
-    const point = element("circle", {
-      cx: x(item.year),
-      cy: y(item.funding),
-      r: 5,
-      fill: "#60a5fa"
+    const attributes = {
+      d: path,
+      fill: "none",
+      stroke: color,
+      "stroke-width": 3
+    };
+
+    if (dashed) attributes["stroke-dasharray"] = "7 5";
+
+    svg.appendChild(element("path", attributes));
+
+    rows.forEach(item => {
+      const positionX = x(item.year);
+      const positionY = y(item[field], maximum);
+
+      const point = dashed
+        ? element("rect", {
+            x: positionX - 4,
+            y: positionY - 4,
+            width: 8,
+            height: 8,
+            fill: color
+          })
+        : element("circle", {
+            cx: positionX,
+            cy: positionY,
+            r: 5,
+            fill: color
+          });
+
+      const label = field === "funding"
+        ? `$${(item.funding / 1000000).toFixed(2)}M`
+        : `${item.awards} awards`;
+
+      point.appendChild(element("title", {},
+        `${item.year}: ${label}`
+      ));
+
+      svg.appendChild(point);
+
+      svg.appendChild(element("text", {
+        x: positionX,
+        y: positionY + (dashed ? 22 : -14),
+        fill: color,
+        "text-anchor": "middle",
+        "font-size": 12
+      }, label));
     });
+  }
 
-    point.appendChild(element("title", {},
-      `${item.year}: ${dollars.format(item.funding)}`
-    ));
-    svg.appendChild(point);
+  addSeries("funding", fundingMaximum, "#60a5fa", false);
+  addSeries("awards", awardsMaximum, "#34d399", true);
 
+  for (let year = firstYear; year <= lastYear; year++) {
     svg.appendChild(element("text", {
-      x: x(item.year),
-      y: y(item.funding) - 14,
-      fill: "#f1f5f9",
-      "text-anchor": "middle",
-      "font-size": 13
-    }, `$${(item.funding / 1000000).toFixed(2)}M`));
-
-    svg.appendChild(element("text", {
-      x: x(item.year),
-      y: height - bottom + 26,
+      x: x(year),
+      y: height - bottom + 30,
       fill: "#cbd5e1",
       "text-anchor": "middle",
       "font-size": 13
-    }, String(item.year)));
-  });
+    }, String(year)));
+  }
 
   container.appendChild(svg);
 
   const first = rows[0];
   const last = rows[rows.length - 1];
 
-  if (first.funding > 0) {
-    const change = (last.funding / first.funding - 1) * 100;
-    const direction = change < 0 ? "lower" : "higher";
+  const comparison = first.funding > 0
+    ? `Recorded funding for awards started in ${last.year} is ` +
+      `${Math.abs((last.funding / first.funding - 1) * 100).toFixed(1)}% ` +
+      `${last.funding < first.funding ? "lower" : "higher"} than for ` +
+      `awards started in ${first.year}. `
+    : "";
 
-    summary.textContent =
-      `Recorded funding for awards started in ${last.year} is ` +
-      `${Math.abs(change).toFixed(1)}% ${direction} than for awards ` +
-      `started in ${first.year}. Older awards have had more time ` +
-      `to receive additional funding. This comparison does not ` +
-      `measure a change in UMD's annual funding receipts.`;
-  } else {
-    summary.textContent =
-      "A percentage comparison is unavailable because the first year's total is zero.";
-  }
+  summary.textContent =
+    comparison +
+    `Award counts were ${first.awards} in ${first.year} and ` +
+    `${last.awards} in ${last.year}. ` +
+    "The lines use different scales; their heights and crossings " +
+    "do not indicate equal values. Older awards have had more time " +
+    "to receive additional funding. Funding totals are not annual receipts.";
 }
-    
       function updateDashboard() {
   drawFundingTrend();
       const selectedYear = document.getElementById("year-filter").value;
