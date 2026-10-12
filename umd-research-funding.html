@@ -354,7 +354,7 @@ function drawFundingTrend() {
   awardsLabel.textContent = "■ Awards — right scale";
   awardsLabel.style.marginLeft = "24px";
 
-  legend.append(fundingLabel, awardsLabel);
+  legend.append(fundingLabel);
   container.appendChild(legend);
 
   const width = 760;
@@ -424,12 +424,7 @@ function drawFundingTrend() {
     "font-size": 13
   }, "Funding ($ millions)"));
 
-  svg.appendChild(element("text", {
-    x: width - right, y: 20,
-    fill: "#34d399",
-    "text-anchor": "end",
-    "font-size": 13
-  }, "Number of awards"));
+  
 
   // Both scales start at zero.
   for (let tick = 0; tick <= 4; tick++) {
@@ -449,12 +444,7 @@ function drawFundingTrend() {
       "font-size": 12
     }, `$${(fundingMaximum * fraction / 1000000).toFixed(0)}M`));
 
-    svg.appendChild(element("text", {
-      x: width - right + 12, y: position + 4,
-      fill: "#34d399",
-      "text-anchor": "start",
-      "font-size": 12
-    }, String(awardsMaximum * fraction)));
+   
   }
 
   function addSeries(field, maximum, color, dashed) {
@@ -500,8 +490,10 @@ function drawFundingTrend() {
         : `${item.awards} awards`;
 
       point.appendChild(element("title", {},
-        `${item.year}: ${label}`
-      ));
+  `${item.year}\n` +
+  `Recorded funding: ${dollars.format(item.funding)}\n` +
+  `Number of awards: ${item.awards}`
+));
 
       svg.appendChild(point);
 
@@ -516,7 +508,7 @@ function drawFundingTrend() {
   }
 
   addSeries("funding", fundingMaximum, "#60a5fa", false);
-  addSeries("awards", awardsMaximum, "#34d399", true);
+  
 
   for (let year = firstYear; year <= lastYear; year++) {
     svg.appendChild(element("text", {
