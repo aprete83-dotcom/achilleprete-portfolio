@@ -408,7 +408,28 @@ async function loadReportingData() {
 
     yearlyData = report.yearly.sort((a, b) => a.year - b.year);
 
-    updateDashboard();
+// Build the dropdown from the years available in the data.
+yearFilter.replaceChildren();
+
+const allYears = document.createElement("option");
+allYears.value = "all";
+allYears.textContent =
+  `All years: ${yearlyData[0].year}–${yearlyData[yearlyData.length - 1].year}`;
+yearFilter.appendChild(allYears);
+
+const currentYear = new Date().getFullYear();
+
+yearlyData.forEach(item => {
+  const option = document.createElement("option");
+  option.value = String(item.year);
+  option.textContent = item.year === currentYear
+    ? `${item.year} — year to date`
+    : String(item.year);
+
+  yearFilter.appendChild(option);
+});
+
+updateDashboard();
     yearFilter.disabled = false;
 
     const publishedAt = new Date(report.updated_at);
