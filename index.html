@@ -1,495 +1,687 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Achille Prete | Information Systems & Data Analysis Portfolio</title>
-  <meta name="description" content="Achille Prete portfolio focused on Information Systems, Data Analysis, Operations Analytics, SQL, Excel, dashboards, computer vision, and process improvement.">
+  <meta name="theme-color" content="#020617">
 
-  <!-- Bootstrap CSS -->
+  <title>Achille Prete | Information Systems &amp; Data Analytics | Maryland</title>
+  <meta name="description" content="Achille Prete builds practical information systems, data analytics, and workflow automation projects using SQL, Python, Excel VBA, and JavaScript in Maryland.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Achille Prete | Information Systems &amp; Data Analytics">
+  <meta property="og:description" content="Practical data analysis, monitoring, and automation projects built to solve operational problems.">
+  <meta property="og:url" content="https://achilleprete.com/">
+  <meta property="og:image" content="https://achilleprete.com/assets/img/DSC_5426.jpg">
+
+  <link rel="canonical" href="https://achilleprete.com/">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark border-bottom fixed-top">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Achille Prete</a>
+  <nav class="navbar navbar-expand-lg navbar-dark border-bottom fixed-top"
+       aria-label="Main navigation">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold" href="#top">
+        Achille Prete<span class="brand-dot">.</span>
+      </a>
+
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNav"
+              aria-controls="mainNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="mainNav">
+
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
         </ul>
 
-        <a class="btn btn-primary ms-lg-3" href="assets/resume/Achille_Prete_Public_Resume.pdf">
-          Download Resume
+        <a class="btn btn-outline-primary btn-sm ms-lg-3"
+           href="assets/resume/Achille_Prete_Public_Resume.pdf"
+           target="_blank"
+           rel="noopener">
+          View Resume
         </a>
+
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="hero-section">
-    <div class="container">
-      <div class="row align-items-center min-vh-100">
+  <main id="main">
 
-        <div class="col-lg-7">
-          <p class="eyebrow mb-3">
-            Information Systems • Data Analysis • Operations Improvement
-          </p>
+    <!-- HERO -->
+    <header class="hero-section portfolio-hero">
 
-          <h1 class="display-5 fw-bold mb-4">
-            I turn operational problems into organized data, clearer systems, and better decisions.
-          </h1>
+      <div class="container">
+        <div class="row align-items-center g-5">
 
-          <p class="lead mb-4">
-            I support academic and research operations through asset tracking, work order coordination,
-            vendor communication, access control, reporting, and process improvement.
-          </p>
+          <div class="col-lg-7">
 
-          <p class="hero-summary mb-4">
-            This portfolio connects real operational problems with structured data, SQL, dashboards,
-            automation, and practical recommendations.
-          </p>
+            <p class="eyebrow mb-3">
+              Information Systems • Data Analytics • Automation
+            </p>
 
-          <div class="d-flex flex-wrap gap-2">
-            <a href="#projects" class="btn btn-primary btn-lg">View Projects</a>
-            <a href="assets/resume/Achille_Prete_Public_Resume.pdf" class="btn btn-outline-primary btn-lg">Download Resume</a>
-            <a href="https://github.com/aprete83-dotcom" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/achilleprete/" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
+            <p class="hero-intro mb-2">
+              Hi, I'm Achille Prete.
+            </p>
 
-        <div class="col-lg-5 mt-5 mt-lg-0">
-          <div class="profile-card">
-            <img src="assets/img/DSC_5426.jpg" alt="Achille Prete professional portrait" class="profile-photo">
+            <h1 class="display-5 fw-bold mb-4">
+              Making operational data useful.
+            </h1>
 
-            <div class="profile-note">
-              <h2 class="h6 fw-bold mb-2">Operations, systems, and data</h2>
-              <p class="small mb-0">
-                I combine hands-on operations experience with Information Systems training to improve workflows,
-                organize data, and build practical tools that support better decisions.
-              </p>
+            <p class="lead mb-3">
+              I build practical tools that turn complex workflows and
+              raw data into clearer reporting, automated processes,
+              and better decisions.
+            </p>
+
+            <p class="hero-summary mb-4">
+              My work brings together hands-on operations, information
+              systems, and projects built with SQL, Python, Excel VBA,
+              and JavaScript.
+            </p>
+
+            <div class="d-flex flex-wrap align-items-center gap-2 hero-actions">
+
+              <a href="#projects" class="btn btn-primary btn-lg">
+                Explore Projects
+              </a>
+
+              <a href="assets/resume/Achille_Prete_Public_Resume.pdf"
+                 class="btn btn-outline-light btn-lg"
+                 target="_blank"
+                 rel="noopener">
+                View Resume
+              </a>
+
+              <a href="https://github.com/aprete83-dotcom"
+                 class="btn btn-link text-light"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                GitHub
+              </a>
+
+              <a href="https://www.linkedin.com/in/achilleprete/"
+                 class="btn btn-link text-light"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                LinkedIn
+              </a>
+
             </div>
           </div>
-        </div>
 
-      </div>
-    </div>
-  </header>
+          <!-- Professional Photo -->
+          <div class="col-lg-5">
 
-  <!-- Impact -->
-  <section class="impact-section py-5">
-    <div class="container">
-      <div class="row text-center g-4">
+            <div class="profile-card portfolio-profile">
 
-        <div class="col-6 col-md-3">
-          <div class="impact-card">
-            <h2 class="fw-bold">600+</h2>
-            <p class="mb-0">Assets supported</p>
-          </div>
-        </div>
+              <img src="assets/img/DSC_5426.jpg"
+                   alt="Professional portrait of Achille Prete"
+                   class="profile-photo"
+                   fetchpriority="high">
 
-        <div class="col-6 col-md-3">
-          <div class="impact-card">
-            <h2 class="fw-bold">40+</h2>
-            <p class="mb-0">Monthly service requests</p>
-          </div>
-        </div>
+              <div class="profile-note">
 
-        <div class="col-6 col-md-3">
-          <div class="impact-card">
-            <h2 class="fw-bold">3</h2>
-            <p class="mb-0">Departments supported</p>
-          </div>
-        </div>
-
-        <div class="col-6 col-md-3">
-          <div class="impact-card">
-            <h2 class="fw-bold">25%</h2>
-            <p class="mb-0">Inventory accuracy improvement</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <div class="row align-items-start g-5">
-
-        <div class="col-lg-5">
-          <p class="section-label">About Me</p>
-          <h2 class="fw-bold mb-3">
-            Operations experience with an Information Systems mindset.
-          </h2>
-        </div>
-
-        <div class="col-lg-7">
-          <p>
-            I support academic and research departments in a university environment through asset tracking,
-            maintenance coordination, vendor communication, access control, and daily operational support.
-          </p>
-
-          <p>
-            My background combines hands-on facilities operations with Information Systems training. I enjoy
-            improving messy processes by organizing data, identifying patterns, documenting workflows, and
-            building tools that make decisions easier.
-          </p>
-
-          <p>
-            This portfolio highlights projects that connect operations, data analysis, and information systems,
-            including river data monitoring, asset inventory tracking, key request reporting, computer vision,
-            automation, and process improvement.
-          </p>
-
-          <div class="personal-card mt-4">
-            <div class="row g-3 align-items-center">
-              <div class="col-md-4">
-                <img src="assets/img/achille-kayaking.jpg" alt="Achille Prete whitewater kayaking" class="personal-photo">
-              </div>
-
-              <div class="col-md-8">
-                <h3 class="h6 fw-bold mb-2">Focus and adaptability</h3>
-                <p class="text-muted mb-0">
-                  Outside of work, I enjoy whitewater kayaking. It has strengthened my focus,
-                  adaptability, and ability to stay calm when conditions change quickly.
+                <p class="small text-uppercase profile-caption mb-1">
+                  Professional focus
                 </p>
+
+                <p class="mb-0">
+                  Data analysis, systems thinking, and workflow
+                  improvement grounded in real operational experience.
+                </p>
+
               </div>
             </div>
+
           </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-5 project-section">
-    <div class="container">
-
-      <div class="row mb-4">
-        <div class="col-lg-9">
-          <p class="section-label">Featured Projects</p>
-          <h2 class="fw-bold mb-3">Information systems, operations analytics, and technical projects</h2>
-          <p class="text-muted mb-0">
-            These projects use sample, anonymized, browser-based, and Excel-based workflows to demonstrate the full data lifecycle:
-            business problem, data preparation, automation, analysis, visualization, and recommendations.
-          </p>
         </div>
       </div>
+    </header>
 
-      <div class="row g-4">
-<!-- Temperature Monitoring Project -->
-<div class="col-md-6 col-xl-4">
-  <div class="card project-card h-100">
-    <div class="card-body">
-      <span class="badge text-bg-warning mb-3">Data Monitoring</span>
+    <!-- IMPACT -->
+    <section class="impact-section py-4"
+             aria-label="Professional experience at a glance">
 
-      <h3 class="h5 fw-bold">Temperature Monitoring Dashboard</h3>
+      <div class="container">
+        <div class="row g-3 text-center">
 
-      <p class="project-problem">
-        Business problem: track indoor temperatures over time
-        and measure how consistently they stay within a target range.
-      </p>
-
-      <ul class="project-list">
-        <li>Collects sensor readings automatically every 30 minutes</li>
-        <li>Displays seven-day graphs with out-of-range readings highlighted</li>
-        <li>Calculates weekly time within target and reports missing data</li>
-      </ul>
-
-      <p class="tools mb-4">
-        Python • Databricks • Govee API • JavaScript • Cloudflare
-      </p>
-
-      <a href="temperature-monitoring.html"
-   class="btn btn-outline-primary btn-sm">
-  View Project
-</a>
-
-     
-    </div>
-  </div>
-</div>
-<!-- UMD Research Funding Project -->
-<div class="col-md-6 col-xl-4">
-  <div class="card project-card h-100">
-    <div class="card-body">
-      <span class="badge bg-primary mb-3">Data Analytics</span>
-
-      <h3 class="h5">UMD Research Funding Explorer</h3>
-
-      <p class="project-problem">
-        Exploring NSF research awards received by the University
-        of Maryland, College Park, from 2020–2025.
-      </p>
-
-      <ul class="project-list">
-        <li>Collected award data through the NSF API using Python.</li>
-        <li>Cleaned and validated 632 awards in Databricks.</li>
-        <li>Used SQL to analyze $360.95 million in obligated funding.</li>
-      </ul>
-
-      <p class="small text-muted">
-        Tools: Python · SQL · Databricks · HTML · JavaScript
-      </p>
-
-      <a href="umd-research-funding.html"
-   class="btn btn-outline-primary">
-  View dashboard
-</a>
-    </div>
-  </div>
-</div>
-        <!-- Project 1 -->
-        <div class="col-md-6 col-xl-4">
-          <div class="card project-card h-100">
-            <div class="card-body">
-              <span class="badge text-bg-primary mb-3">Data Analysis</span>
-
-              <h3 class="h5 fw-bold">Key Request & Cost Savings Dashboard</h3>
-
-              <p class="project-problem">
-                Business problem: understand whether better key tracking can reduce unnecessary new key orders.
-              </p>
-
-              <ul class="project-list">
-                <li>Compared new keys vs transferred keys by month</li>
-                <li>Calculated transfer percentage and trend changes</li>
-                <li>Estimated potential cost savings</li>
-              </ul>
-
-              <p class="tools mb-4">Excel • SQL • Dashboard Design</p>
-
-              <a href="#" class="btn btn-outline-primary btn-sm">Coming Soon</a>
+          <div class="col-6 col-lg-3">
+            <div class="impact-card">
+              <div class="impact-number">600+</div>
+              <p class="mb-0">Assets supported</p>
             </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="impact-card">
+              <div class="impact-number">40+</div>
+              <p class="mb-0">Service requests coordinated monthly</p>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="impact-card">
+              <div class="impact-number">3</div>
+              <p class="mb-0">Academic departments supported</p>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="impact-card">
+              <div class="impact-number">$360M+</div>
+              <p class="mb-0">NSF research funding analyzed</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5 portfolio-section">
+
+      <div class="container">
+        <div class="row g-5 align-items-start">
+
+          <div class="col-lg-4">
+
+            <p class="section-label">About</p>
+
+            <h2 class="fw-bold">
+              Operations experience. Systems mindset.
+            </h2>
+
+          </div>
+
+          <div class="col-lg-8 about-copy">
+
+            <p>
+              I support academic and research operations in a university
+              environment, coordinating asset records, maintenance requests,
+              access, vendors, and day-to-day workflows.
+            </p>
+
+            <p>
+              My background spans hands-on operational work and
+              Information Systems. That combination helps me spot where
+              data is incomplete, where a process slows people down,
+              and where a small technical solution can make a
+              meaningful difference.
+            </p>
+
+            <p class="mb-0">
+              The projects below show how I approach a problem:
+              understand the workflow, collect and validate the data,
+              develop a solution, and explain what the results mean.
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-5 project-section portfolio-section">
+
+      <div class="container">
+
+        <div class="row mb-4 align-items-end g-3">
+          <div class="col-lg-9">
+
+            <p class="section-label">Selected Work</p>
+
+            <h2 class="fw-bold mb-3">
+              Projects that demonstrate the process,
+              not just the result.
+            </h2>
+
+            <p class="text-muted mb-0">
+              Explore projects spanning data pipelines, analytics,
+              dashboards, and workflow automation. Each case study
+              explains the problem, approach, and outcome.
+              Public and demo data are used where appropriate.
+            </p>
+
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="col-md-6 col-xl-4">
-          <div class="card project-card h-100">
-            <div class="card-body">
-              <span class="badge text-bg-success mb-3">Information Systems</span>
+        <div class="row g-4">
 
-              <h3 class="h5 fw-bold">Asset Inventory Information System</h3>
+          <!-- PROJECT 1: RESEARCH FUNDING -->
+          <div class="col-md-6 col-xl-4">
 
-              <p class="project-problem">
-                Business problem: improve asset visibility across departments, rooms, statuses, and inventory cycles.
-              </p>
+            <article class="card project-card h-100">
+              <div class="card-body d-flex flex-column">
 
-              <ul class="project-list">
-                <li>Designed a relational database structure</li>
-                <li>Created data quality checks for missing records</li>
-                <li>Summarized assets by department and location</li>
-              </ul>
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                  <span class="badge text-bg-primary">Data Analytics</span>
+                  <span class="project-meta">NSF awards · 2020 onward</span>
+                </div>
 
-              <p class="tools mb-4">SQL Server • Excel • ERD • Reporting</p>
+                <h3 class="h5 fw-bold">
+                  Research Funding Explorer
+                </h3>
 
-              <a href="#" class="btn btn-outline-primary btn-sm">Coming Soon</a>
-            </div>
+                <p class="project-problem">
+                  Analyzed approximately $360.9 million in NSF
+                  research funding to make award patterns and
+                  totals easier to explore.
+                </p>
+
+                <ul class="project-list">
+                  <li>Retrieved award data through a public API</li>
+                  <li>Prepared and analyzed records in Databricks</li>
+                  <li>Used SQL to explore funding totals and award patterns</li>
+                </ul>
+
+                <p class="tools">
+                  Python • SQL • Databricks • API
+                </p>
+
+                <div class="mt-auto">
+                  <a href="umd-research-funding.html"
+                     class="btn btn-outline-primary btn-sm">
+                    Explore Case Study
+                  </a>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+
+          <!-- PROJECT 2: TEMPERATURE MONITORING -->
+          <div class="col-md-6 col-xl-4">
+
+            <article class="card project-card h-100">
+              <div class="card-body d-flex flex-column">
+
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                  <span class="badge text-bg-warning">Data Monitoring</span>
+                  <span class="project-meta">2026</span>
+                </div>
+
+                <h3 class="h5 fw-bold">
+                  Temperature Monitoring Dashboard
+                </h3>
+
+                <p class="project-problem">
+                  Turn time-series sensor readings into a clearer
+                  view of indoor temperature trends.
+                </p>
+
+                <ul class="project-list">
+                  <li>Collect and process recurring readings</li>
+                  <li>Visualize trends and deviations from target range</li>
+                  <li>Summarize weekly coverage and in-range performance</li>
+                </ul>
+
+                <p class="tools">
+                  Python • Databricks • JavaScript • Cloudflare
+                </p>
+
+                <div class="mt-auto">
+                  <a href="temperature-monitoring.html"
+                     class="btn btn-outline-primary btn-sm">
+                    Explore Case Study
+                  </a>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+
+          <!-- PROJECT 3: PACKAGE LABEL AUTOMATION -->
+          <div class="col-md-6 col-xl-4">
+
+            <article class="card project-card h-100">
+              <div class="card-body d-flex flex-column">
+
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                  <span class="badge text-bg-secondary">Excel Automation</span>
+                  <span class="project-meta">Workflow solution</span>
+                </div>
+
+                <h3 class="h5 fw-bold">
+                  Package Label Automation System
+                </h3>
+
+                <p class="project-problem">
+                  Reduce repetitive manual label preparation
+                  in a package receiving workflow.
+                </p>
+
+                <ul class="project-list">
+                  <li>Look up package details by requisition number</li>
+                  <li>Generate consistent print-ready labels</li>
+                  <li>Prompt for refrigeration when needed</li>
+                </ul>
+
+                <p class="tools">
+                  Excel • VBA • Data Lookup • Workflow Design
+                </p>
+
+                <div class="mt-auto">
+                  <a href="package-label-automation.html"
+                     class="btn btn-outline-primary btn-sm">
+                    Explore Case Study
+                  </a>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+
+          <!-- PROJECT 4: TRAFFIC COUNTER -->
+          <div class="col-md-6 col-xl-4">
+
+            <article class="card project-card h-100 featured-project">
+              <div class="card-body d-flex flex-column">
+
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                  <span class="badge text-bg-info">Computer Vision</span>
+                  <span class="project-meta">Live demo</span>
+                </div>
+
+                <h3 class="h5 fw-bold">
+                  Traffic Counter Dashboard
+                </h3>
+
+                <p class="project-problem">
+                  Explore browser-based object detection for
+                  counting vehicles from recorded traffic footage.
+                </p>
+
+                <ul class="project-list">
+                  <li>Process video input in the browser</li>
+                  <li>Apply an object-detection model</li>
+                  <li>Show a live vehicle count and visual overlay</li>
+                </ul>
+
+                <p class="tools">
+                  JavaScript • TensorFlow.js • COCO-SSD
+                </p>
+
+                <div class="mt-auto d-flex flex-wrap gap-2">
+
+                  <a href="https://aprete83-dotcom.github.io/traffic-counter-app/"
+                     class="btn btn-outline-primary btn-sm"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    Open Live Demo
+                  </a>
+
+                  <a href="https://github.com/aprete83-dotcom/traffic-counter-app"
+                     class="btn btn-outline-secondary btn-sm"
+                     target="_blank"
+                     rel="noopener noreferrer">
+                    View Code
+                  </a>
+
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+
+          <!-- PROJECT 5: POTOMAC RIVER ALERT -->
+          <div class="col-md-6 col-xl-4">
+
+            <article class="card project-card h-100">
+              <div class="card-body d-flex flex-column">
+
+                <div class="d-flex justify-content-between align-items-center gap-2 mb-3">
+                  <span class="badge text-bg-warning">Automation Concept</span>
+                  <span class="project-meta">Concept case study</span>
+                </div>
+
+                <h3 class="h5 fw-bold">
+                  Potomac River Level Alert
+                </h3>
+
+                <p class="project-problem">
+                  Design a threshold-based monitoring workflow
+                  that turns public river gauge readings
+                  into useful notifications.
+                </p>
+
+                <ul class="project-list">
+                  <li>Define source data and target ranges</li>
+                  <li>Compare readings against thresholds</li>
+                  <li>Present a concept dashboard and sample email alert</li>
+                </ul>
+
+                <p class="tools">
+                  Public Data • Conditional Logic • Notifications
+                </p>
+
+                <div class="mt-auto">
+                  <a href="potomac-river-alert.html"
+                     class="btn btn-outline-primary btn-sm">
+                    Explore Concept
+                  </a>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-5 portfolio-section">
+
+      <div class="container">
+
+        <div class="row mb-4">
+          <div class="col-lg-8">
+
+            <p class="section-label">Capabilities</p>
+
+            <h2 class="fw-bold mb-3">
+              Tools I use to solve problems
+            </h2>
+
+            <p class="text-muted mb-0">
+              Technical tools paired with the operational
+              experience needed to apply them in practice.
+            </p>
+
           </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="col-md-6 col-xl-4">
-          <div class="card project-card h-100">
-            <div class="card-body">
-              <span class="badge text-bg-warning mb-3">Data Monitoring</span>
+        <div class="row g-4">
 
-              <h3 class="h5 fw-bold">Potomac River Level Alert System</h3>
-
-              <p class="project-problem">
-                Business problem: automate river gauge monitoring and notify the user when water levels are inside a preferred kayaking range.
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Data &amp; Analytics</h3>
+              <p class="text-muted mb-0">
+                SQL, Excel, Python, data cleaning,
+                exploratory analysis, dashboards
               </p>
-
-              <ul class="project-list">
-                <li>Checks a public river gauge data source</li>
-                <li>Compares current level against custom thresholds</li>
-                <li>Sends an email alert when conditions are within range</li>
-              </ul>
-
-              <p class="tools mb-4">Public Data • Automation • Email Alerts • Dashboard Concept</p>
-
-              <a href="potomac-river-alert.html" class="btn btn-outline-primary btn-sm">View Project</a>
             </div>
           </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Automation &amp; Development</h3>
+              <p class="text-muted mb-0">
+                VBA, JavaScript, HTML, CSS,
+                Bootstrap, GitHub
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Information Systems</h3>
+              <p class="text-muted mb-0">
+                Workday, Kuali, AssetWorks, Lenel,
+                database concepts, process documentation
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xl-3">
+            <div class="skill-card h-100">
+              <h3 class="h6 fw-bold">Operational Improvement</h3>
+              <p class="text-muted mb-0">
+                Asset tracking, vendor coordination,
+                inventory workflows, reporting,
+                user-focused solutions
+              </p>
+            </div>
+          </div>
+
         </div>
+      </div>
+    </section>
 
-        <!-- Project 4 -->
-        <div class="col-md-6 col-xl-4">
-          <div class="card project-card h-100 featured-project">
-            <div class="card-body">
-              <span class="badge text-bg-info mb-3">Computer Vision</span>
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section py-5 portfolio-section">
 
-              <h3 class="h5 fw-bold">Webcam Traffic Counter Dashboard</h3>
+      <div class="container">
+        <div class="row g-5 align-items-center">
 
-              <p class="project-problem">
-                Business problem: explore how real-time video data can be used to monitor traffic flow and count objects automatically.
-              </p>
+          <div class="col-lg-7">
 
-              <ul class="project-list">
-                <li>Built a browser-based dashboard for webcam or video input</li>
-                <li>Detected and counted vehicles and pedestrians in real time</li>
-                <li>Displayed live counts and visual tracking overlays</li>
-              </ul>
+            <p class="section-label">Connect</p>
 
-              <p class="tools mb-4">
-                JavaScript • HTML • CSS • Computer Vision • GitHub Pages
-              </p>
+            <h2 class="fw-bold mb-3">
+              Interested in how these systems work?
+            </h2>
 
-              <div class="d-flex flex-wrap gap-2">
-                <a href="https://aprete83-dotcom.github.io/traffic-counter-app/" 
-                   class="btn btn-outline-primary btn-sm" 
-                   target="_blank" 
-                   rel="noopener">
-                  View Live Project
-                </a>
+            <p class="mb-4 text-muted">
+              I'm happy to discuss the projects, the decisions
+              behind them, and lessons learned along the way.
+            </p>
 
-                <a href="https://github.com/aprete83-dotcom/traffic-counter-app" 
-                   class="btn btn-outline-secondary btn-sm" 
-                   target="_blank" 
-                   rel="noopener">
-                  View Code
-                </a>
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+
+              <a href="mailto:achille@achilleprete.com"
+                 class="btn btn-primary btn-lg">
+                Email Me
+              </a>
+
+              <a href="assets/resume/Achille_Prete_Public_Resume.pdf"
+                 class="btn btn-outline-light"
+                 target="_blank"
+                 rel="noopener">
+                View Resume
+              </a>
+
+              <a href="https://www.linkedin.com/in/achilleprete/"
+                 class="btn btn-link text-light"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                LinkedIn
+              </a>
+
+              <a href="https://github.com/aprete83-dotcom"
+                 class="btn btn-link text-light"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                GitHub
+              </a>
+
+            </div>
+
+          </div>
+
+          <!-- Kayaking Photo -->
+          <div class="col-lg-5">
+
+            <div class="personal-card">
+              <div class="row g-3 align-items-center">
+
+                <div class="col-sm-5">
+
+                  <img src="assets/img/achille-kayaking.jpg"
+                       alt="Achille whitewater kayaking"
+                       class="personal-photo"
+                       loading="lazy">
+
+                </div>
+
+                <div class="col-sm-7">
+
+                  <h3 class="h6 fw-bold mb-2">
+                    Outside of work
+                  </h3>
+
+                  <p class="small text-muted mb-0">
+                    Whitewater kayaking has taught me to adapt,
+                    stay focused, and make thoughtful decisions
+                    when conditions change.
+                  </p>
+
+                </div>
+
               </div>
             </div>
+
           </div>
-        </div>
 
-        <!-- Project 5 -->
-        <div class="col-md-6 col-xl-4">
-          <div class="card project-card h-100">
-            <div class="card-body">
-              <span class="badge text-bg-secondary mb-3">Excel Automation</span>
-
-              <h3 class="h5 fw-bold">Package Label Automation System</h3>
-
-              <p class="project-problem">
-                Business problem: help student workers process incoming packages faster, more consistently, and with fewer manual entry errors.
-              </p>
-
-              <ul class="project-list">
-                <li>Built an Excel-based label automation tool using requisition numbers</li>
-                <li>Automatically populated package labels with the correct information</li>
-                <li>Added refrigeration logic for packages requiring cold storage</li>
-              </ul>
-
-              <p class="tools mb-4">
-                Excel • VBA • Data Lookup • Form Logic • Process Improvement
-              </p>
-
-              <a href="package-label-automation.html" class="btn btn-outline-primary btn-sm">View Project</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="py-5">
-    <div class="container">
-
-      <div class="row mb-4">
-        <div class="col-lg-8">
-          <p class="section-label">Skills</p>
-          <h2 class="fw-bold mb-3">Tools and strengths</h2>
-          <p class="text-muted mb-0">
-            My skills combine data analysis, business systems, operations, technical documentation, and web-based project development.
-          </p>
         </div>
       </div>
+    </section>
 
-      <div class="row g-4">
+  </main>
 
-        <div class="col-md-3">
-          <div class="skill-card h-100">
-            <h3 class="h6 fw-bold">Data Analysis</h3>
-            <p class="text-muted mb-0">
-              Excel, Pivot Tables, Power Query, SQL, dashboards, data cleaning, reporting
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="skill-card h-100">
-            <h3 class="h6 fw-bold">Information Systems</h3>
-            <p class="text-muted mb-0">
-              Workday, Kuali, AssetWorks, Lenel, database thinking, systems documentation
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="skill-card h-100">
-            <h3 class="h6 fw-bold">Operations Improvement</h3>
-            <p class="text-muted mb-0">
-              Inventory tracking, vendor reconciliation, work orders, process mapping, issue follow-up
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="skill-card h-100">
-            <h3 class="h6 fw-bold">Web & Technical</h3>
-            <p class="text-muted mb-0">
-              HTML, CSS, Bootstrap, GitHub, JavaScript, basic Python, SQL Server, project documentation
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact-section py-5">
-    <div class="container text-center">
-
-      <p class="section-label text-white-50">Contact</p>
-      <h2 class="fw-bold mb-3">Let’s connect</h2>
-
-      <p class="mb-4">
-        Let’s connect about data analysis, information systems, operations analytics, or process improvement.
-      </p>
-
-      <div class="d-flex justify-content-center flex-wrap gap-2">
-        <a href="mailto:achille@achilleprete.com" class="btn btn-light">Email Me</a>
-        <a href="assets/resume/Achille_Prete_Public_Resume.pdf" class="btn btn-outline-light">Download Resume</a>
-        <a href="https://github.com/aprete83-dotcom" class="btn btn-outline-light" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/achilleprete/" class="btn btn-outline-light" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="py-4 border-top">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 align-items-center">
+
       <p class="small mb-0">
         &copy; 2026 Achille Prete. All rights reserved.
       </p>
 
       <p class="small mb-0">
-        Built with HTML, CSS, Bootstrap, and GitHub Pages.
+        Built with HTML, CSS, Bootstrap &amp; GitHub Pages.
       </p>
+
     </div>
+
   </footer>
 
   <!-- Bootstrap JS -->
