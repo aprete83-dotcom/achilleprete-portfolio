@@ -1,0 +1,524 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020617">
+
+  <title>Veneto SME Monitor | Achille Prete</title>
+
+  <meta name="description"
+        content="An independent MATLAB economic research project exploring productivity, financial pressure, late payments, and small manufacturing businesses in Veneto, Italy.">
+
+  <link rel="canonical"
+        href="https://achilleprete.com/veneto-sme-monitor.html">
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <style>
+    .veneto-lead {
+      max-width: 800px;
+      color: var(--muted);
+    }
+
+    .veneto-kicker {
+      color: var(--primary);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .veneto-hero {
+      padding: 66px 0 50px;
+    }
+
+    .veneto-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      height: 100%;
+    }
+
+    .veneto-panel p,
+    .veneto-panel li {
+      color: var(--muted);
+    }
+
+    .veneto-panel h3 {
+      font-size: 1.12rem;
+    }
+
+    .veneto-number {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: .86rem;
+      letter-spacing: .06em;
+    }
+
+    .veneto-note {
+      border-left: 3px solid var(--primary);
+      background: var(--dark-soft);
+      border-radius: 0 12px 12px 0;
+      padding: 18px 20px;
+      color: var(--muted);
+    }
+
+    .veneto-sources li {
+      margin-bottom: .7rem;
+    }
+
+    .veneto-sources a {
+      color: #94c8ff;
+    }
+
+    .veneto-status {
+      color: #d5e6ff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: .8rem;
+      display: inline-block;
+    }
+
+    @media (max-width: 575.98px) {
+      .veneto-hero {
+        padding: 40px 0 35px;
+      }
+
+      .veneto-panel {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top border-bottom"
+       aria-label="Main navigation">
+
+    <div class="container">
+
+      <a class="navbar-brand fw-bold" href="index.html">
+        Achille Prete<span class="brand-dot">.</span>
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#projects">Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#skills">Skills</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+
+        </ul>
+
+        <a class="btn btn-outline-primary btn-sm ms-lg-3"
+           href="assets/resume/Achille_Prete_Public_Resume.pdf"
+           target="_blank"
+           rel="noopener">
+          View Resume
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <header class="hero-section veneto-hero">
+
+      <div class="container">
+
+        <a class="d-inline-block mb-4"
+           href="index.html#projects">
+          ← Back to projects
+        </a>
+
+        <p class="veneto-kicker">
+          MATLAB · Economic Research · Veneto, Italy
+        </p>
+
+        <h1 class="display-5 fw-bold mb-3">
+          Veneto SME Monitor
+        </h1>
+
+        <p class="lead veneto-lead mb-3">
+          Productivity, financial pressure, and the resilience
+          of small manufacturing businesses.
+        </p>
+
+        <p class="veneto-lead mb-4">
+          An independent research project combining firsthand
+          business experience with transparent economic data
+          analysis. The goal is to investigate the conditions
+          small firms face—not assume the causes of their
+          successes or closures.
+        </p>
+
+        <span class="veneto-status">
+          Research in development · Initial project page
+        </span>
+
+      </div>
+    </header>
+
+    <!-- PERSONAL MOTIVATION -->
+    <section class="py-5 portfolio-section"
+             aria-labelledby="motivation-heading">
+
+      <div class="container">
+
+        <div class="row g-4 align-items-start">
+
+          <div class="col-lg-5">
+
+            <p class="section-label">Why this project</p>
+
+            <h2 id="motivation-heading" class="fw-bold">
+              A question rooted in experience.
+            </h2>
+
+          </div>
+
+          <div class="col-lg-7">
+
+            <p class="veneto-lead">
+              Before moving to the United States and working
+              in information systems, I operated a metalworking
+              business in Italy. I saw how managing operating
+              expenses, fiscal obligations, and delayed or
+              unpaid customer invoices could put pressure on
+              a small company.
+            </p>
+
+            <p class="veneto-lead">
+              That experience motivates this study of Veneto's
+              small-business economy. I want to compare personal
+              observations with official data, understand patterns
+              across manufacturing businesses, and explore how
+              financial stress can affect cash flow.
+            </p>
+
+            <div class="veneto-note">
+              Personal experience informs the research questions;
+              it is not used as statistical evidence. The analysis
+              will distinguish documented observations, model
+              assumptions, and possible explanations.
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH QUESTIONS -->
+    <section class="py-5 project-section portfolio-section"
+             aria-labelledby="questions-heading">
+
+      <div class="container">
+
+        <p class="section-label">Research agenda</p>
+
+        <h2 id="questions-heading" class="fw-bold mb-4">
+          Four questions to investigate
+        </h2>
+
+        <div class="row g-4">
+
+          <!-- BUSINESS DEMOGRAPHY -->
+          <div class="col-md-6">
+
+            <article class="veneto-panel">
+
+              <div class="veneto-number mb-2">
+                01 / BUSINESS DEMOGRAPHY
+              </div>
+
+              <h3>How are manufacturing firms changing?</h3>
+
+              <p class="mb-0">
+                Study business registrations, closures, and
+                the available measures of active businesses
+                across Veneto's provinces and industries.
+              </p>
+
+            </article>
+          </div>
+
+          <!-- PRODUCTIVITY -->
+          <div class="col-md-6">
+
+            <article class="veneto-panel">
+
+              <div class="veneto-number mb-2">
+                02 / PRODUCTIVITY
+              </div>
+
+              <h3>What affects long-term competitiveness?</h3>
+
+              <p class="mb-0">
+                Explore regional productivity, investment,
+                and firm-size patterns using OECD, ISTAT,
+                and Eurostat evidence.
+              </p>
+
+            </article>
+          </div>
+
+          <!-- FINANCIAL PRESSURE -->
+          <div class="col-md-6">
+
+            <article class="veneto-panel">
+
+              <div class="veneto-number mb-2">
+                03 / FINANCIAL PRESSURE
+              </div>
+
+              <h3>How do costs shape resilience?</h3>
+
+              <p class="mb-0">
+                Examine available fiscal and labor-cost
+                measures, clearly separating national
+                indicators from Veneto-specific data.
+              </p>
+
+            </article>
+          </div>
+
+          <!-- LATE PAYMENTS -->
+          <div class="col-md-6">
+
+            <article class="veneto-panel">
+
+              <div class="veneto-number mb-2">
+                04 / CUSTOMER PAYMENTS
+              </div>
+
+              <h3>What happens when invoices are paid late?</h3>
+
+              <p class="mb-0">
+                Create a MATLAB cash-flow stress test for
+                small workshops, with clearly labeled
+                illustrative assumptions.
+              </p>
+
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="py-5 portfolio-section"
+             aria-labelledby="methods-heading">
+
+      <div class="container">
+
+        <div class="row g-4">
+
+          <div class="col-lg-7">
+
+            <p class="section-label">Research workflow</p>
+
+            <h2 id="methods-heading" class="fw-bold mb-3">
+              Built with MATLAB, one dataset at a time.
+            </h2>
+
+            <div class="veneto-panel">
+
+              <ol class="mb-0">
+
+                <li class="mb-3">
+                  <strong>Collect:</strong>
+                  Locate documented, publicly accessible
+                  regional economic datasets.
+                </li>
+
+                <li class="mb-3">
+                  <strong>Validate:</strong>
+                  Identify geography, industry definitions,
+                  units, missing data, and time coverage.
+                </li>
+
+                <li class="mb-3">
+                  <strong>Analyze:</strong>
+                  Calculate trends, compare provinces,
+                  and test financial scenarios in MATLAB.
+                </li>
+
+                <li>
+                  <strong>Publish:</strong>
+                  Add verified charts, source notes,
+                  and reproducible scripts to this page.
+                </li>
+
+              </ol>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+
+            <p class="section-label">Current status</p>
+
+            <h2 class="fw-bold mb-3">
+              What is available today?
+            </h2>
+
+            <div class="veneto-panel">
+
+              <p>
+                The project scope, research questions,
+                and initial sources are established.
+                The Veneto-specific analytical dataset
+                and results are still being developed.
+              </p>
+
+              <p class="mb-0">
+                Charts and numerical findings will be added
+                only after the source data have been
+                downloaded and checked. No demonstration
+                figures are presented as official statistics.
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA SOURCES -->
+    <section class="py-5 project-section portfolio-section"
+             aria-labelledby="sources-heading">
+
+      <div class="container">
+
+        <p class="section-label">Source library</p>
+
+        <h2 id="sources-heading" class="fw-bold mb-3">
+          Research references
+        </h2>
+
+        <p class="veneto-lead mb-4">
+          Starting points for the study. Their geographic
+          coverage and definitions will be checked before
+          combining results.
+        </p>
+
+        <div class="veneto-panel">
+
+          <ul class="veneto-sources mb-0">
+
+            <li>
+              <a href="https://www.oecd.org/en/publications/can-productivity-secure-veneto-s-competitive-future_3065d6c0-en/full-report.html"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                OECD — Can Productivity Secure Veneto's
+                Competitive Future?
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.unioncamere.gov.it/osservatori-economici/demografia-delle-imprese/movimprese"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Unioncamere / Movimprese — Business demography
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.istat.it/"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                ISTAT — Italian national statistics
+              </a>
+            </li>
+
+            <li>
+              <a href="https://ec.europa.eu/eurostat/web/business-demography/information-data"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                Eurostat — Business demography
+              </a>
+            </li>
+
+            <li>
+              <a href="https://single-market-economy.ec.europa.eu/smes/challenges-and-resilience/late-payment/eu-payment-observatory/observatory-analysis_en"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                EU Payment Observatory — Late payment research
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-top">
+
+    <div class="container d-flex flex-column flex-md-row
+                justify-content-between gap-2 align-items-center">
+
+      <p class="small mb-0">
+        &copy; 2026 Achille Prete. All rights reserved.
+      </p>
+
+      <p class="small mb-0">
+        Independent research project · MATLAB · Veneto SME Monitor
+      </p>
+
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+</body>
+</html>
